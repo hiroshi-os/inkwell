@@ -2,30 +2,18 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { clearSession, getStoredUser, type User } from "@/lib/api";
+import { clearSession } from "@/lib/api";
+import { useSession } from "@/lib/session";
 
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    setUser(getStoredUser());
-    const onStorage = () => setUser(getStoredUser());
-    window.addEventListener("storage", onStorage);
-    window.addEventListener("inkwell-auth", onStorage);
-    return () => {
-      window.removeEventListener("storage", onStorage);
-      window.removeEventListener("inkwell-auth", onStorage);
-    };
-  }, [pathname]);
+  const { user, ready } = useSession();
 
   const logout = () => {
     clearSession();
     window.dispatchEvent(new Event("inkwell-auth"));
     router.push("/");
-    setUser(null);
   };
 
   return (
@@ -41,7 +29,7 @@ export function Header() {
           <Link href="/" className={pathname === "/" ? "active" : ""}>
             Browse
           </Link>
-          {user && (
+          {ready && user && (
             <Link href="/feed" className={pathname === "/feed" ? "active" : ""}>
               Following
             </Link>
@@ -49,7 +37,7 @@ export function Header() {
           <Link href="/library" className={pathname === "/library" ? "active" : ""}>
             Library
           </Link>
-          {user ? (
+          {ready && user ? (
             <>
               <Link href="/write" className={pathname?.startsWith("/write") ? "active" : ""}>
                 Write

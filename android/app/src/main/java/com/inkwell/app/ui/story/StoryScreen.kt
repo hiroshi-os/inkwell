@@ -81,12 +81,14 @@ fun StoryScreen(
                         reload()
                     }
                 }) { Text(if (s.inLibrary) "In library" else "Save") }
-                OutlinedButton(onClick = {
-                    scope.launch {
-                        if (s.followingAuthor) Graph.api.unfollow(s.author.id) else Graph.api.follow(s.author.id)
-                        reload()
-                    }
-                }) { Text(if (s.followingAuthor) "Following" else "Follow") }
+                if (Graph.session.userId != s.author.id) {
+                    OutlinedButton(onClick = {
+                        scope.launch {
+                            if (s.followingAuthor) Graph.api.unfollow(s.author.id) else Graph.api.follow(s.author.id)
+                            reload()
+                        }
+                    }) { Text(if (s.followingAuthor) "Following" else "Follow") }
+                }
             }
         }
         Text("Chapters", style = MaterialTheme.typography.titleLarge, fontFamily = FontFamily.Serif)

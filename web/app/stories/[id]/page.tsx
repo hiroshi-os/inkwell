@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { api, getToken, type Story } from "@/lib/api";
+import { api, type Story } from "@/lib/api";
+import { useSession } from "@/lib/session";
 import { coverStyle } from "@/components/StoryCard";
 
 export default function StoryPage({ params }: { params: { id: string } }) {
   const [story, setStory] = useState<Story | null>(null);
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
+  const { user: me, authed } = useSession();
 
   const load = async () => {
     try {
@@ -27,7 +29,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
   if (!story) return <p className="wrap muted">Setting type…</p>;
 
   const first = story.chapters?.find((c) => c.published) || story.chapters?.[0];
-  const authed = Boolean(getToken());
+  const isAuthor = Boolean(me && me.id === story.author.id);
 
   const toggleLibrary = async () => {
     if (!authed) return;
@@ -72,14 +74,21 @@ export default function StoryPage({ params }: { params: { id: string } }) {
                 Start reading
               </Link>
             )}
+            {isAuthor && (
+              <Link className="btn ghost" href={`/write/${story.id}`}>
+                Edit story
+              </Link>
+            )}
             {authed ? (
               <>
                 <button className="btn ghost" disabled={busy} onClick={toggleLibrary}>
                   {story.inLibrary ? "In library" : "Save to library"}
                 </button>
-                <button className="btn ghost" disabled={busy} onClick={toggleFollow}>
-                  {story.followingAuthor ? "Following" : "Follow author"}
-                </button>
+                {!isAuthor && (
+                  <button className="btn ghost" disabled={busy} onClick={toggleFollow}>
+                    {story.followingAuthor ? "Following" : "Follow author"}
+                  </button>
+                )}
               </>
             ) : (
               <Link href="/login">Log in to follow or save</Link>

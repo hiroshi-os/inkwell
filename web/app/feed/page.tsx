@@ -2,20 +2,22 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { api, getToken, type Story } from "@/lib/api";
+import { api, type Story } from "@/lib/api";
+import { useSession } from "@/lib/session";
 import { StoryGrid } from "@/components/StoryCard";
 
 export default function FeedPage() {
+  const { authed, ready } = useSession();
   const [stories, setStories] = useState<Story[]>([]);
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    if (!getToken()) return;
+    if (!ready || !authed) return;
     api
       .feed()
       .then((d) => setStories(d.stories))
       .catch((e) => setErr(e instanceof Error ? e.message : "Could not load feed"));
-  }, []);
+  }, [ready, authed]);
 
   return (
     <div className="wrap">
@@ -23,14 +25,14 @@ export default function FeedPage() {
         Following
       </h1>
       <p className="muted">Recent published work from authors you follow. Ranked newest-first — no ML ranking in the MVP.</p>
-      {!getToken() ? (
+      {ready && !authed ? (
         <p>
           <Link href="/login">Log in</Link> to assemble a feed.
         </p>
       ) : (
         <>
           {err && <p className="err">{err}</p>}
-          <StoryGrid stories={stories} empty="Follow an author from a story page. Seed user reader already follows iris." />
+          <StoryGrid stories={stories} empty={ready ? "Follow an author from a story page. Seed user reader already follows iris." : "Loading…"} />
         </>
       )}
     </div>

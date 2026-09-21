@@ -13,6 +13,10 @@ class SessionStore(context: Context) {
         get() = prefs.getString("username", null)
         set(value) { prefs.edit().putString("username", value).apply() }
 
+    var userId: String?
+        get() = prefs.getString("userId", null)
+        set(value) { prefs.edit().putString("userId", value).apply() }
+
     var displayName: String?
         get() = prefs.getString("displayName", null)
         set(value) { prefs.edit().putString("displayName", value).apply() }
@@ -23,6 +27,7 @@ class SessionStore(context: Context) {
         token = auth.token
         username = auth.user.username
         displayName = auth.user.displayName
+        userId = auth.user.id
     }
 
     fun clear() {
