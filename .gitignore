@@ -12,6 +12,7 @@ web/.next
 web/out
 web/.env.local
 web/.turbo
+web/tsconfig.tsbuildinfo
 
 # Android
 android/.gradle

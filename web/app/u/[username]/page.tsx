@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { api, getToken, type Story, type User } from "@/lib/api";
+import { api, type Story, type User } from "@/lib/api";
+import { useSession } from "@/lib/session";
 import { StoryGrid } from "@/components/StoryCard";
 
 export default function ProfilePage({ params }: { params: { username: string } }) {
@@ -9,7 +10,7 @@ export default function ProfilePage({ params }: { params: { username: string } }
   const [following, setFollowing] = useState(false);
   const [stories, setStories] = useState<Story[]>([]);
   const [err, setErr] = useState("");
-  const authed = typeof window !== "undefined" && Boolean(getToken());
+  const { authed, user: me } = useSession();
 
   const load = async () => {
     try {
@@ -47,7 +48,7 @@ export default function ProfilePage({ params }: { params: { username: string } }
         @{user.username} · {user.followers} followers · {user.following} following
       </p>
       <p className="lede">{user.bio || "This author has not written a bio yet."}</p>
-      {authed && (
+      {authed && me?.id !== user.id && (
         <div className="actions">
           <button className="btn ghost" onClick={toggle}>
             {following ? "Following" : "Follow"}

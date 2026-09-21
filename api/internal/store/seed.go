@@ -90,7 +90,7 @@ const lanternCh2 = `Wind off the water had a habit of stealing names. Mara learn
 
 She sat on an overturned crate behind the net loft and dripped the official allotment into the reservoir. The flame did not brighten. It did not dim. It watched her, if a flame can watch, with the manners of something very old pretending to be useful.
 
-Her aunt's notebook — the one with the cracked spine and the tide tables in the margins — had a line copied twice: *Light is a contract.* Under it, in a shakier hand: *The city broke theirs first.*
+Her aunt's notebook — the one with the cracked spine and the tide tables in the margins — had a line copied twice: "Light is a contract." Under it, in a shakier hand: "The city broke theirs first."
 
 Footsteps on the pier. The customs coat again, and a second shadow that smelled of wet wool and mint. "We're taking an inventory of unlicensed sources," the coat said. "You'll come to the counting house at dawn."
 
@@ -116,7 +116,7 @@ const lettersCh1 = `Box 214 had been empty for eleven months, which was how Len 
 
 She worked the late sort at the railway post: canvas bins, steam, the particular loneliness of other people's handwriting. The letter was thick, unstamped, and addressed in a script she recognized because she had practiced it on receipts when the counter was slow. Her own. The name on the front was hers, too, which felt like a prank until she opened it.
 
-*Do not put this back in 214. Take the 9:40 to Iver. The second car. Bring nothing that jingles.*
+"Do not put this back in 214. Take the 9:40 to Iver. The second car. Bring nothing that jingles."
 
 Len looked at the clock. The 9:40 existed. Iver existed. Jingling, she realized, was her key ring, her faith in procedure, and the little bell over the staff door.
 
@@ -140,17 +140,17 @@ The 10:15 back to the city was boarding. Len listened to it the way you listen t
 
 const saltCh1 = `The assay office sat above the chandlery, which meant everything Wren weighed came with the smell of rope and old rain.
 
-Copper was easy. Salt was honest. Ships were the problem. The morning ledger listed the *Marrow Gull* as docked in slip four with a hold of ore. Slip four held a cat and a bucket. Wren walked down anyway, because ledgers that lie still expect to be believed, and belief is how fraud learns to stand upright.
+Copper was easy. Salt was honest. Ships were the problem. The morning ledger listed the Marrow Gull as docked in slip four with a hold of ore. Slip four held a cat and a bucket. Wren walked down anyway, because ledgers that lie still expect to be believed, and belief is how fraud learns to stand upright.
 
 Captain Vell found her counting empty water. "You're early for a ghost," he said.
 
 "I'm on time for copper."
 
-"Then you're late for the truth." He nodded at the fog, which was doing its best impression of a wall. "The *Gull* paid harbor tax. The *Gull* is on the board. The *Gull* is also, inconveniently, at the bottom of the channel since last winter. Someone is very fond of ships that cannot argue."`
+"Then you're late for the truth." He nodded at the fog, which was doing its best impression of a wall. "The Gull paid harbor tax. The Gull is on the board. The Gull is also, inconveniently, at the bottom of the channel since last winter. Someone is very fond of ships that cannot argue."`
 
 const saltCh2 = `Low tide drew a map the city did not publish. Wren followed Vell along the exposed spine of the old breakwater, boots sucking at weed, the assay satchel knocking her hip like a second conscience.
 
-They found the copper first: not ore, coins, green with patience, stamped with a mint that had closed before Wren was born. Then the ledger-stone — a slab someone had tried to hide under kelp, chiseled with dates and slip numbers and a column titled *never arrived*.
+They found the copper first: not ore, coins, green with patience, stamped with a mint that had closed before Wren was born. Then the ledger-stone — a slab someone had tried to hide under kelp, chiseled with dates and slip numbers and a column titled "never arrived".
 
 "They're counting absences," Wren said. "Absences that still pay tax."
 
