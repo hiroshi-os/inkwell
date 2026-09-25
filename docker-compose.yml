@@ -1,0 +1,43 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: inkwell
+      POSTGRES_PASSWORD: inkwell
+      POSTGRES_DB: inkwell
+    ports:
+      - "5432:5432"
+    volumes:
+      - inkwell_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U inkwell -d inkwell"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: ./api
+    ports:
+      - "8080:8080"
+    environment:
+      DATABASE_URL: postgres://inkwell:inkwell@db:5432/inkwell?sslmode=disable
+      JWT_SECRET: dev-inkwell-secret-change-me
+      PORT: "8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080
+    depends_on:
+      - api
+
+volumes:
+  inkwell_pg:

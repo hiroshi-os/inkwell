@@ -1,0 +1,35 @@
+# API
+api/inkwell.db
+api/inkwell.db-wal
+api/inkwell.db-shm
+api/server
+api/coverage.out
+*.exe
+
+# Web
+web/node_modules
+web/.next
+web/out
+web/.env.local
+web/.turbo
+web/tsconfig.tsbuildinfo
+
+# Android
+android/.gradle
+android/build
+android/app/build
+android/local.properties
+android/*.iml
+android/.idea
+**/.idea/
+*.apk
+*.aab
+
+# OS / editor
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+.vscode
+.cursor
