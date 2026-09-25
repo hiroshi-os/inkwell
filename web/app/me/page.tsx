@@ -33,26 +33,30 @@ export default function MePage() {
     setMsg("Profile saved.");
   };
 
-  if (!user) return <p className="wrap muted">Loading desk…</p>;
+  if (!user) return <p className="wrap muted">Loading profile…</p>;
 
   return (
-    <form className="panel" onSubmit={save}>
-      <p className="kicker">@{user.username}</p>
-      <h1>Profile</h1>
-      <p className="muted">
-        {user.followers} followers · {user.following} following
-      </p>
-      <label>Display name</label>
-      <input className="full" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-      <label>Bio</label>
-      <textarea style={{ minHeight: 120 }} value={bio} onChange={(e) => setBio(e.target.value)} />
-      {msg && <p className="muted">{msg}</p>}
-      <div className="actions">
-        <button className="btn">Save</button>
+    <div className="wrap">
+      <div className="profile-head">
+        <div className="avatar">{user.displayName.slice(0, 1).toUpperCase()}</div>
+        <div>
+          <h1 className="page-title">{user.displayName}</h1>
+          <p className="muted">
+            @{user.username} · {user.followers} followers · {user.following} following
+          </p>
+        </div>
       </div>
-      <p className="muted" style={{ marginTop: "1.2rem" }}>
-        Auth is JWT in localStorage — fine for the demo, not a hardened session design. See SYSTEM_DESIGN.md.
-      </p>
-    </form>
+      <form className="panel" onSubmit={save} style={{ marginTop: 0 }}>
+        <h2 className="toc-title">About</h2>
+        <label>Display name</label>
+        <input className="full" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+        <label>Bio</label>
+        <textarea style={{ minHeight: 120 }} value={bio} onChange={(e) => setBio(e.target.value)} />
+        {msg && <p className="muted">{msg}</p>}
+        <div className="actions">
+          <button className="btn">Save</button>
+        </div>
+      </form>
+    </div>
   );
 }

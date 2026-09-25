@@ -30,7 +30,7 @@ export default function ProfilePage({ params }: { params: { username: string } }
   }, [params.username]);
 
   if (err) return <p className="wrap err">{err}</p>;
-  if (!user) return <p className="wrap muted">Looking up the byline…</p>;
+  if (!user) return <p className="wrap muted">Loading profile…</p>;
 
   const toggle = async () => {
     if (following) await api.unfollow(user.id);
@@ -40,22 +40,28 @@ export default function ProfilePage({ params }: { params: { username: string } }
 
   return (
     <div className="wrap">
-      <p className="kicker" style={{ marginTop: "1.6rem" }}>
-        Author
-      </p>
-      <h1 className="page-title">{user.displayName}</h1>
-      <p className="muted">
-        @{user.username} · {user.followers} followers · {user.following} following
-      </p>
-      <p className="lede">{user.bio || "This author has not written a bio yet."}</p>
-      {authed && me?.id !== user.id && (
-        <div className="actions">
-          <button className="btn ghost" onClick={toggle}>
-            {following ? "Following" : "Follow"}
-          </button>
+      <div className="profile-head">
+        <div className="avatar">{user.displayName.slice(0, 1).toUpperCase()}</div>
+        <div>
+          <h1 className="page-title">{user.displayName}</h1>
+          <p className="muted">
+            @{user.username} · {user.followers} followers · {user.following} following
+          </p>
+          <p className="lede" style={{ marginTop: 8 }}>
+            {user.bio || "This author has not written a bio yet."}
+          </p>
+          {authed && me?.id !== user.id && (
+            <div className="actions">
+              <button className={following ? "btn ghost" : "btn"} onClick={toggle}>
+                {following ? "Following" : "Follow"}
+              </button>
+            </div>
+          )}
         </div>
-      )}
-      <h2 className="page-title">Stories</h2>
+      </div>
+      <div className="section-head">
+        <h2>Stories</h2>
+      </div>
       <StoryGrid stories={stories} empty="No published stories." />
     </div>
   );

@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Figtree, Fraunces } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 import { Header } from "@/components/Header";
 import "./globals.css";
 
-const sans = Figtree({ subsets: ["latin"], variable: "--sans" });
-const serif = Fraunces({ subsets: ["latin"], variable: "--serif" });
+const sans = Source_Sans_3({ subsets: ["latin"], variable: "--sans" });
 
 export const metadata: Metadata = {
-  title: "Inkwell — stories, serialized",
-  description: "A small storytelling platform for serialized fiction. Browse, read, follow, write.",
+  title: "Inkwell — Stories you'll obsess over",
+  description: "Read and write serialized stories. Browse, follow, and keep a library.",
   icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${serif.variable}`}>
+      <body className={sans.variable} style={{ fontFamily: "var(--sans)" }}>
         <Header />
         <main>{children}</main>
         <footer className="site-footer">
-          <div className="wrap">Inkwell MVP · original fiction, not a Wattpad clone.</div>
+          <div className="wrap">Inkwell · read, write, obsess.</div>
         </footer>
       </body>
     </html>
