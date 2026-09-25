@@ -71,7 +71,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .header-search {
   flex: 1;
-  max-width: 420px;
+  max-width: 280px;
   position: relative;
 }
 .header-search input {
@@ -150,7 +150,7 @@ nav.header-nav a.active, nav.header-nav a:hover, .linkish:hover {
   padding: 8px 0 24px;
   align-items: start;
 }
-.featured .cover { width: 160px; }
+.featured .cover { width: 160px; height: 240px; }
 .featured h1 {
   margin: 0 0 6px;
   font-size: 28px;
@@ -221,6 +221,7 @@ nav.header-nav a.active, nav.header-nav a:hover, .linkish:hover {
   color: #fff;
   overflow: hidden;
   border-radius: 4px;
+  aspect-ratio: 2 / 3;
 }
 .cover-title {
   position: absolute;
