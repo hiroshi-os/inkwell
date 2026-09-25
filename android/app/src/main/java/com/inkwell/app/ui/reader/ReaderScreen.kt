@@ -1,5 +1,6 @@
 package com.inkwell.app.ui.reader
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,7 +20,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.inkwell.app.data.Chapter
@@ -54,24 +56,25 @@ fun ReaderScreen(
     Column(
         Modifier
             .fillMaxSize()
+            .background(Color.White)
             .verticalScroll(rememberScrollState())
             .padding(20.dp),
     ) {
-        Text("← ${c.storyTitle ?: "Story"}", modifier = Modifier.clickable(onClick = onBack), color = MaterialTheme.colorScheme.primary)
-        Text("Chapter ${c.position}", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, modifier = Modifier.padding(top = 12.dp))
-        Text(c.title, style = MaterialTheme.typography.headlineMedium, fontFamily = FontFamily.Serif, modifier = Modifier.padding(vertical = 8.dp))
-        Text(c.body, fontSize = 18.sp, lineHeight = 30.sp, fontFamily = FontFamily.Serif)
+        Text(c.storyTitle ?: "Story", modifier = Modifier.clickable(onClick = onBack), color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
+        Text("Part ${c.position}", color = MaterialTheme.colorScheme.secondary, modifier = Modifier.padding(top = 12.dp))
+        Text(c.title, fontWeight = FontWeight.Bold, fontSize = 24.sp, modifier = Modifier.padding(vertical = 8.dp))
+        Text(c.body, fontSize = 18.sp, lineHeight = 30.sp, color = Color(0xFF333333))
         Row(
-            Modifier.fillMaxWidth().padding(top = 24.dp),
+            Modifier.fillMaxWidth().padding(top = 28.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             if (!c.prevId.isNullOrBlank()) {
-                Text("← Previous", modifier = Modifier.clickable { onOpenChapter(c.prevId!!) }, color = MaterialTheme.colorScheme.primary)
+                Text("← Previous Part", modifier = Modifier.clickable { onOpenChapter(c.prevId!!) }, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
             } else {
                 Text("Beginning", color = MaterialTheme.colorScheme.secondary)
             }
             if (!c.nextId.isNullOrBlank()) {
-                Text("Next →", modifier = Modifier.clickable { onOpenChapter(c.nextId!!) }, color = MaterialTheme.colorScheme.primary)
+                Text("Next Part →", modifier = Modifier.clickable { onOpenChapter(c.nextId!!) }, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)
             } else {
                 Text("End", color = MaterialTheme.colorScheme.secondary)
             }

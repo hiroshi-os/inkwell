@@ -34,10 +34,13 @@ export default function WriteIndexPage() {
   };
 
   return (
-    <div className="wrap panel" style={{ marginTop: "1.5rem" }}>
-      <h1>Your desk</h1>
-      <p className="muted">Create a story, then add chapters. Public browse only shows published work.</p>
-      <form onSubmit={create} className="stack">
+    <div className="wrap">
+      <div className="section-head" style={{ marginTop: 24 }}>
+        <h2>Write</h2>
+      </div>
+      <form onSubmit={create} className="panel" style={{ marginTop: 0 }}>
+        <h1>Create a story</h1>
+        <p className="muted">Add a title and first details. You can write parts next.</p>
         <label>Title</label>
         <input value={title} onChange={(e) => setTitle(e.target.value)} required />
         <label>Genre</label>
@@ -48,23 +51,21 @@ export default function WriteIndexPage() {
           <option>Romance</option>
           <option>Sci-Fi</option>
         </select>
-        <label>Synopsis</label>
+        <label>Description</label>
         <textarea style={{ minHeight: 120 }} value={synopsis} onChange={(e) => setSynopsis(e.target.value)} />
         {err && <p className="err">{err}</p>}
         <div className="actions">
-          <button className="btn">Start story</button>
+          <button className="btn">Create</button>
         </div>
       </form>
-      <h2 className="page-title" style={{ marginTop: "2rem" }}>
-        Drafts & published
-      </h2>
+      <h2 className="toc-title">Your stories</h2>
       <ul className="chapter-list">
         {stories.map((s) => (
           <li key={s.id}>
             <Link href={`/write/${s.id}`}>
               <span>{s.title}</span>
               <span className="muted">
-                {s.status} · {s.chapterCount} ch.
+                {s.status} · {s.chapterCount} parts
               </span>
             </Link>
           </li>

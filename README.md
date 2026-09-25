@@ -1,6 +1,6 @@
 # Inkwell
 
-A small **serialized storytelling** platform: authors publish stories as chapters; readers browse, read, follow, and save. Original product — not a Wattpad clone and not an AI writing tool.
+A small **serialized storytelling** platform: authors publish stories as chapters; readers browse, read, follow, and save. The product name and fiction are original; the **web and Android UI** follows Wattpad’s layout (orange CTAs, portrait cover rails, Discover/home, story details + reader). Not Wattpad’s logo or assets.
 
 | Piece | Choice | Why |
 | --- | --- | --- |

@@ -77,6 +77,9 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="wrap" style={{ paddingTop: "1.4rem", paddingBottom: "3rem" }}>
+      <div className="section-head">
+        <h2>Edit story</h2>
+      </div>
       <form onSubmit={saveMeta} className="stack" style={{ marginBottom: "1.4rem" }}>
         <label>Title</label>
         <input value={title} onChange={(e) => setTitle(e.target.value)} />

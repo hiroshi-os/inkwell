@@ -32,8 +32,11 @@ export default function RegisterPage() {
 
   return (
     <form className="auth-card" onSubmit={onSubmit}>
-      <p className="kicker">New desk</p>
-      <h1>Create an account</h1>
+      <div className="wordmark" style={{ marginBottom: 12 }}>
+        <span className="wp-mark">i</span>
+        <span className="wordmark-text">inkwell</span>
+      </div>
+      <h1>Sign up</h1>
       <label>Username</label>
       <input className="full" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="lowercase, 3–24 chars" />
       <label>Email</label>
@@ -44,11 +47,13 @@ export default function RegisterPage() {
       <input className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       {err && <p className="err">{err}</p>}
       <div className="actions">
-        <button className="btn" disabled={busy}>
-          {busy ? "…" : "Join Inkwell"}
+        <button className="btn full" disabled={busy}>
+          {busy ? "…" : "Sign up"}
         </button>
-        <Link href="/login">Already writing?</Link>
       </div>
+      <p className="muted" style={{ marginTop: 16 }}>
+        Already have an account? <Link href="/login">Log in</Link>
+      </p>
     </form>
   );
 }

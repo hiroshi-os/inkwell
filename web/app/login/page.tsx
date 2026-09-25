@@ -30,7 +30,10 @@ export default function LoginPage() {
 
   return (
     <form className="auth-card" onSubmit={onSubmit}>
-      <p className="kicker">Welcome back</p>
+      <div className="wordmark" style={{ marginBottom: 12 }}>
+        <span className="wp-mark">i</span>
+        <span className="wordmark-text">inkwell</span>
+      </div>
       <h1>Log in</h1>
       <label>Username or email</label>
       <input className="full" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
@@ -38,11 +41,13 @@ export default function LoginPage() {
       <input className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
       {err && <p className="err">{err}</p>}
       <div className="actions">
-        <button className="btn" disabled={busy}>
-          {busy ? "…" : "Enter"}
+        <button className="btn full" disabled={busy}>
+          {busy ? "…" : "Log in"}
         </button>
-        <Link href="/register">Need an account?</Link>
       </div>
+      <p className="muted" style={{ marginTop: 16 }}>
+        Don&apos;t have an account? <Link href="/register">Sign up</Link>
+      </p>
     </form>
   );
 }
