@@ -26,7 +26,7 @@ export default function ReaderPage({ params }: { params: { id: string; chapterId
       </p>
       <h1>{ch.title}</h1>
       <div className="prose">{ch.body}</div>
-      <nav className="pager">
+      <nav className="pager" aria-label="Chapter navigation">
         {ch.prevId ? (
           <Link href={`/stories/${ch.storyId}/read/${ch.prevId}`}>← Previous</Link>
         ) : (

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { api, type Story } from "@/lib/api";
 import { StoryGrid } from "@/components/StoryCard";
 
@@ -11,28 +11,38 @@ export default function HomePage() {
   const [q, setQ] = useState("");
   const [genre, setGenre] = useState("All");
   const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(true);
+  const [filtered, setFiltered] = useState(false);
+  const latestRequest = useRef(0);
 
-  const load = async (query = q, g = genre) => {
+  const load = useCallback(async (query: string, g: string) => {
+    const requestId = ++latestRequest.current;
+    setBusy(true);
+    setErr("");
+    setFiltered(Boolean(query.trim()) || g !== "All");
     try {
-      setErr("");
       const data = await api.stories(query, g === "All" ? "" : g);
+      if (requestId !== latestRequest.current) return;
       setStories(data.stories);
     } catch (e) {
+      if (requestId !== latestRequest.current) return;
       setErr(e instanceof Error ? e.message : "Could not load stories");
+    } finally {
+      if (requestId === latestRequest.current) setBusy(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     load("", "All");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => { latestRequest.current += 1; };
+  }, [load]);
 
   const onSearch = (e: FormEvent) => {
     e.preventDefault();
-    load();
+    load(q, genre);
   };
 
-  const countLabel = useMemo(() => `${stories.length} published ${stories.length === 1 ? "story" : "stories"}`, [stories.length]);
+  const countLabel = `${stories.length} published ${stories.length === 1 ? "story" : "stories"}`;
 
   return (
     <div className="wrap">
@@ -47,21 +57,23 @@ export default function HomePage() {
         <aside className="hero-aside">
           <h2>Demo shelf</h2>
           <p>
-            Seeded as <strong>iris</strong> / <strong>niko</strong> / <strong>reader</strong> — password <code>password123</code>. API on :8080, this app on :3000.
+            Try <strong>iris</strong>, <strong>niko</strong>, or <strong>reader</strong> with the demo password <code>password123</code>.
           </p>
         </aside>
       </section>
-      <form className="toolbar" onSubmit={onSearch}>
-        <input className="search" placeholder="Search titles, synopses, authors" value={q} onChange={(e) => setQ(e.target.value)} />
+      <form className="toolbar" role="search" aria-label="Story search" onSubmit={onSearch}>
+        <label htmlFor="story-search" className="sr-only">Search stories</label>
+        <input id="story-search" name="q" type="search" className="search" placeholder="Search titles, synopses, authors" value={q} onChange={(e) => setQ(e.target.value)} />
         <button className="btn" type="submit">
           Search
         </button>
-        <div className="chips">
+        <div className="chips" role="group" aria-label="Genres">
           {GENRES.map((g) => (
             <button
               key={g}
               type="button"
               className={`chip ${genre === g ? "on" : ""}`}
+              aria-pressed={genre === g}
               onClick={() => {
                 setGenre(g);
                 load(q, g);
@@ -72,9 +84,11 @@ export default function HomePage() {
           ))}
         </div>
       </form>
-      <p className="muted">{countLabel}</p>
-      {err && <p className="err">{err}</p>}
-      <StoryGrid stories={stories} empty="No published stories yet. Start the API and refresh, or write one." />
+      <p className="muted" role="status" aria-atomic="true">{busy ? "Loading stories…" : err ? "Stories could not be loaded." : countLabel}</p>
+      {err && <p className="err" role="alert">{err}</p>}
+      <div aria-busy={busy}>
+        {!busy && !err && <StoryGrid stories={stories} empty={filtered ? "No stories match your search. Try another title or genre." : "No published stories yet. Start writing to share one."} />}
+      </div>
     </div>
   );
 }
