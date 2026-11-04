@@ -1,0 +1,2899 @@
+{
+  "generatedAt": "2026-11-04T13:22:21.852Z",
+  "baselineCommit": "2b708be8691a885010b595430be7fa78d5ccc313",
+  "implementationWasUncommittedDuringRun": true,
+  "platform": "win32",
+  "versions": {
+    "next": "14.2.35",
+    "@playwright/test": "1.64.1",
+    "@axe-core/playwright": "4.14.0",
+    "axe-core": "4.14.0"
+  },
+  "wcagTags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa"
+  ],
+  "before": {
+    "scans": 32,
+    "ruleViewportViolations": 32,
+    "affectedElementViewportInstances": 76,
+    "incompleteRuleViewportInstances": 36,
+    "pagesWithOverflow": [],
+    "browser": "156.0.8078.4",
+    "checks": [
+      {
+        "route": "browse",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:05.743Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [
+          {
+            "rule": "color-contrast",
+            "impact": "serious",
+            "targets": [
+              [
+                "aside > p"
+              ],
+              [
+                "strong:nth-child(1)"
+              ],
+              [
+                "strong:nth-child(2)"
+              ],
+              [
+                "strong:nth-child(3)"
+              ],
+              [
+                "code"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "browse",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:18.738Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [
+          {
+            "rule": "color-contrast",
+            "impact": "serious",
+            "targets": [
+              [
+                "aside > p"
+              ],
+              [
+                "strong:nth-child(1)"
+              ],
+              [
+                "strong:nth-child(2)"
+              ],
+              [
+                "strong:nth-child(3)"
+              ],
+              [
+                "code"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "browse",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:28.283Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [
+          {
+            "rule": "color-contrast",
+            "impact": "serious",
+            "targets": [
+              [
+                "aside > p"
+              ],
+              [
+                "strong:nth-child(1)"
+              ],
+              [
+                "strong:nth-child(2)"
+              ],
+              [
+                "strong:nth-child(3)"
+              ],
+              [
+                "code"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "browse",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:39.157Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [
+          {
+            "rule": "color-contrast",
+            "impact": "serious",
+            "targets": [
+              [
+                "aside > p"
+              ],
+              [
+                "strong:nth-child(1)"
+              ],
+              [
+                "strong:nth-child(2)"
+              ],
+              [
+                "strong:nth-child(3)"
+              ],
+              [
+                "code"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:14.345Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:24.357Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:34.907Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:46.039Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:16.099Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[value=\"Letters at Dusk\"]"
+              ],
+              [
+                "input[value=\"Contemporary\"]"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "label:nth-child(1)"
+              ],
+              [
+                "label:nth-child(3)"
+              ],
+              [
+                "label:nth-child(5)"
+              ],
+              [
+                "label:nth-child(7)"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:25.566Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[value=\"Letters at Dusk\"]"
+              ],
+              [
+                "input[value=\"Contemporary\"]"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "label:nth-child(1)"
+              ],
+              [
+                "label:nth-child(3)"
+              ],
+              [
+                "label:nth-child(5)"
+              ],
+              [
+                "label:nth-child(7)"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:36.483Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[value=\"Letters at Dusk\"]"
+              ],
+              [
+                "input[value=\"Contemporary\"]"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "label:nth-child(1)"
+              ],
+              [
+                "label:nth-child(3)"
+              ],
+              [
+                "label:nth-child(5)"
+              ],
+              [
+                "label:nth-child(7)"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:47.299Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[value=\"Letters at Dusk\"]"
+              ],
+              [
+                "input[value=\"Contemporary\"]"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          },
+          {
+            "rule": "select-name",
+            "impact": "critical",
+            "targets": [
+              [
+                "select"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "label:nth-child(1)"
+              ],
+              [
+                "label:nth-child(3)"
+              ],
+              [
+                "label:nth-child(5)"
+              ],
+              [
+                "label:nth-child(7)"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:07.337Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[autocomplete=\"username\"]"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:19.807Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[autocomplete=\"username\"]"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:29.615Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[autocomplete=\"username\"]"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:41.059Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[autocomplete=\"username\"]"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:17.504Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:26.818Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:37.815Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:48.474Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input"
+              ],
+              [
+                "textarea"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:12.963Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:23.283Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:33.757Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:44.786Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:09.078Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[type=\"email\"]"
+              ],
+              [
+                "input:nth-child(8)"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:20.983Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[type=\"email\"]"
+              ],
+              [
+                "input:nth-child(8)"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:30.816Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[type=\"email\"]"
+              ],
+              [
+                "input:nth-child(8)"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:42.248Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [
+          {
+            "rule": "label",
+            "impact": "critical",
+            "targets": [
+              [
+                "input[type=\"email\"]"
+              ],
+              [
+                "input:nth-child(8)"
+              ],
+              [
+                "input[type=\"password\"]"
+              ]
+            ]
+          }
+        ],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 320,
+        "testedAt": "2026-11-04T13:14:11.141Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 390,
+        "testedAt": "2026-11-04T13:14:22.146Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 768,
+        "testedAt": "2026-11-04T13:14:32.203Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:14:43.474Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "longContent": [
+      {
+        "viewport": 320,
+        "content": 2957
+      },
+      {
+        "viewport": 320,
+        "content": 10371
+      }
+    ]
+  },
+  "after": {
+    "scans": 32,
+    "ruleViewportViolations": 0,
+    "affectedElementViewportInstances": 0,
+    "incompleteRuleViewportInstances": 36,
+    "pagesWithOverflow": [],
+    "browser": "156.0.8078.4",
+    "checks": [
+      {
+        "route": "browse",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:32.585Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "browse",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:44.571Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "browse",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:53.349Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "browse",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:02.040Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                ".chip[type=\"button\"]:nth-child(4)"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".story-card:nth-child(1) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(2) > .cover > .genre-pill"
+              ],
+              [
+                ".story-card:nth-child(3) > .cover > .genre-pill"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:40.263Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:49.988Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:58.709Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "desk",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:08.335Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:42.051Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "h1"
+              ],
+              [
+                "label[for=\"story-title\"]"
+              ],
+              [
+                "label[for=\"story-genre\"]"
+              ],
+              [
+                "label[for=\"story-synopsis\"]"
+              ],
+              [
+                "label[for=\"story-status\"]"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p:nth-child(1)"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:51.144Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "h1"
+              ],
+              [
+                "label[for=\"story-title\"]"
+              ],
+              [
+                "label[for=\"story-genre\"]"
+              ],
+              [
+                "label[for=\"story-synopsis\"]"
+              ],
+              [
+                "label[for=\"story-status\"]"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p:nth-child(1)"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:59.838Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "h1"
+              ],
+              [
+                "label[for=\"story-title\"]"
+              ],
+              [
+                "label[for=\"story-genre\"]"
+              ],
+              [
+                "label[for=\"story-synopsis\"]"
+              ],
+              [
+                "label[for=\"story-status\"]"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p:nth-child(1)"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "editor",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:09.913Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                "h1"
+              ],
+              [
+                "label[for=\"story-title\"]"
+              ],
+              [
+                "label[for=\"story-genre\"]"
+              ],
+              [
+                "label[for=\"story-synopsis\"]"
+              ],
+              [
+                "label[for=\"story-status\"]"
+              ],
+              [
+                ".ghost"
+              ],
+              [
+                "aside > button[type=\"button\"]:nth-child(2)"
+              ],
+              [
+                "button[type=\"button\"]:nth-child(3)"
+              ],
+              [
+                "p:nth-child(1)"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:34.013Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:45.611Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:54.404Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "login",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:03.226Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:43.409Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:52.249Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 768,
+        "testedAt": "2026-11-04T13:21:00.916Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "profile",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:11.376Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:38.828Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:48.856Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:57.610Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "reader",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:06.891Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                "p"
+              ],
+              [
+                "p > a"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".prose"
+              ],
+              [
+                ".muted"
+              ],
+              [
+                ".pager > a"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:35.341Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:46.661Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:55.479Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "register",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:04.372Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                "span"
+              ],
+              [
+                ".wrap"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 320,
+        "testedAt": "2026-11-04T13:20:37.092Z",
+        "overflow": {
+          "viewport": 320,
+          "content": 320
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 390,
+        "testedAt": "2026-11-04T13:20:47.772Z",
+        "overflow": {
+          "viewport": 390,
+          "content": 390
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 768,
+        "testedAt": "2026-11-04T13:20:56.542Z",
+        "overflow": {
+          "viewport": 768,
+          "content": 768
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "route": "story",
+        "width": 1280,
+        "testedAt": "2026-11-04T13:21:05.539Z",
+        "overflow": {
+          "viewport": 1280,
+          "content": 1280
+        },
+        "violations": [],
+        "manualReview": [
+          {
+            "rule": "color-contrast",
+            "targets": [
+              [
+                ".nib"
+              ],
+              [
+                ".kicker"
+              ],
+              [
+                "h1"
+              ],
+              [
+                ".byline"
+              ],
+              [
+                "a[href$=\"iris\"]"
+              ],
+              [
+                ".lede"
+              ],
+              [
+                ".actions > a[href$=\"login\"]"
+              ],
+              [
+                "h2"
+              ],
+              [
+                "li:nth-child(1) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(1) > a > .muted"
+              ],
+              [
+                "li:nth-child(2) > a > span:nth-child(1)"
+              ],
+              [
+                "li:nth-child(2) > a > .muted"
+              ],
+              [
+                "footer > .wrap"
+              ]
+            ]
+          },
+          {
+            "rule": "link-in-text-block",
+            "targets": [
+              [
+                "a[href$=\"iris\"]"
+              ]
+            ]
+          }
+        ]
+      }
+    ],
+    "longContent": [
+      {
+        "viewport": 320,
+        "content": 320
+      },
+      {
+        "viewport": 320,
+        "content": 320
+      }
+    ]
+  },
+  "tests": {
+    "startTime": "2026-11-04T13:20:23.235Z",
+    "duration": 56945.736,
+    "expected": 38,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "limits": "Chromium on Windows; local Go API and SQLite. Repeated viewport instances are not unique defects. Incomplete axe rules need manual review. No real participant study, screen-reader test, native mobile-device test, or complete WCAG conformance is claimed."
+}

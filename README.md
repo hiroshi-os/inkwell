@@ -124,3 +124,14 @@ Seed users (created only when the user table is empty):
 `GET /health` for probes. Full shape and scale discussion: [SYSTEM_DESIGN.md](./SYSTEM_DESIGN.md).
 
 Env: `PORT` (8080), `JWT_SECRET`, `DATABASE_URL` (`sqlite:inkwell.db` or `postgres://...`).
+
+## Web UI quality
+
+The web client has explicit form labels, keyboard bypass/focus styling, announced
+feedback, and long-content reflow fixes. [Measured UI checks](docs/ui-quality.md)
+record the before/after accessibility scans and 38 passing Playwright tests across
+four viewport widths, including real Go API/SQLite workflows. Automated checks
+are partial coverage, not a WCAG certification.
+
+For a real participant study, use the [moderator protocol](docs/usability-study.md)
+and blank observation sheet. No participant study has been completed yet.

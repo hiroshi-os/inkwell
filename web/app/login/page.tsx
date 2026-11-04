@@ -32,14 +32,14 @@ export default function LoginPage() {
     <form className="auth-card" onSubmit={onSubmit}>
       <p className="kicker">Welcome back</p>
       <h1>Log in</h1>
-      <label>Username or email</label>
-      <input className="full" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
-      <label>Password</label>
-      <input className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
-      {err && <p className="err">{err}</p>}
+      <label htmlFor="login-username">Username or email</label>
+      <input id="login-username" name="username" required className="full" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
+      <label htmlFor="login-password">Password</label>
+      <input id="login-password" name="password" required className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
+      {err && <p className="err" role="alert">{err}</p>}
       <div className="actions">
         <button className="btn" disabled={busy}>
-          {busy ? "…" : "Enter"}
+          {busy ? "Logging in…" : "Log in"}
         </button>
         <Link href="/register">Need an account?</Link>
       </div>

@@ -1,0 +1,33 @@
+name: Web UI quality
+on: [push, pull_request]
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25.x'
+          cache-dependency-path: api/go.sum
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+        working-directory: web
+      - run: npx playwright install --with-deps chromium
+        working-directory: web
+      - run: npm run typecheck
+        working-directory: web
+      - run: npm run test:ui
+        working-directory: web
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-accessibility-and-reflow
+          path: |
+            web/.test-artifacts/after/
+            web/.test-artifacts/results.json
+            web/test-results/

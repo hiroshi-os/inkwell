@@ -34,18 +34,20 @@ export default function RegisterPage() {
     <form className="auth-card" onSubmit={onSubmit}>
       <p className="kicker">New desk</p>
       <h1>Create an account</h1>
-      <label>Username</label>
-      <input className="full" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="lowercase, 3–24 chars" />
-      <label>Email</label>
-      <input className="full" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label>Display name</label>
-      <input className="full" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
-      <label>Password</label>
-      <input className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      {err && <p className="err">{err}</p>}
+      <label htmlFor="register-username">Username</label>
+      <input id="register-username" name="username" autoComplete="username" required minLength={3} maxLength={24} aria-describedby="username-hint" className="full" value={username} onChange={(e) => setUsername(e.target.value)} />
+      <p id="username-hint" className="muted">Use 3–24 lowercase letters, numbers, or underscores.</p>
+      <label htmlFor="register-email">Email</label>
+      <input id="register-email" name="email" autoComplete="email" required className="full" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label htmlFor="register-name">Display name</label>
+      <input id="register-name" name="displayName" autoComplete="nickname" className="full" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+      <label htmlFor="register-password">Password</label>
+      <input id="register-password" name="password" autoComplete="new-password" required minLength={8} aria-describedby="password-hint" className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <p id="password-hint" className="muted">Use at least 8 characters.</p>
+      {err && <p className="err" role="alert">{err}</p>}
       <div className="actions">
         <button className="btn" disabled={busy}>
-          {busy ? "…" : "Join Inkwell"}
+          {busy ? "Creating account…" : "Join Inkwell"}
         </button>
         <Link href="/login">Already writing?</Link>
       </div>
