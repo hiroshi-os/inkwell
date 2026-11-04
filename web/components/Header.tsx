@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { BookOpen } from "lucide-react";
+
 import { usePathname, useRouter } from "next/navigation";
 import { clearSession } from "@/lib/api";
 import { useSession } from "@/lib/session";
@@ -21,7 +23,7 @@ export function Header() {
       <div className="row">
         <Link href="/" className="wordmark">
           <span className="nib" aria-hidden>
-            ✎
+            <BookOpen size={20} aria-hidden="true" />
           </span>
           inkwell
         </Link>

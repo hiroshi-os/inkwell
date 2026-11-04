@@ -10,25 +10,22 @@ export default function LibraryPage() {
   const { authed, ready } = useSession();
   const [stories, setStories] = useState<Story[]>([]);
   const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!ready || !authed) return;
     api
       .library()
       .then((d) => setStories(d.stories))
-      .catch((e) => setErr(e instanceof Error ? e.message : "Could not load library"));
+      .catch((e) => setErr(e instanceof Error ? e.message : "Could not load library"))
+      .finally(() => setLoading(false));
   }, [ready, authed]);
 
   return (
     <div className="wrap">
       <div className="section-head" style={{ marginTop: 24 }}>
         <h2>Library</h2>
-        <span className="see">Current Reads</span>
-      </div>
-      <div className="chips">
-        <span className="chip on">Current Reads</span>
-        <span className="chip">Archive</span>
-        <span className="chip">Reading Lists</span>
+        <span className="see">Saved stories</span>
       </div>
       {ready && !authed ? (
         <p>
@@ -37,7 +34,7 @@ export default function LibraryPage() {
       ) : (
         <>
           {err && <p className="err">{err}</p>}
-          <StoryGrid stories={stories} empty={ready ? "Nothing saved yet. Open a story and tap + Add." : "Loading…"} />
+          {!err && (loading ? <p className="muted" role="status">Loading your library…</p> : <StoryGrid stories={stories} empty="Nothing saved yet. Open a story to add it to your library." />)}
         </>
       )}
     </div>
