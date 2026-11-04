@@ -25,7 +25,8 @@ export function Header() {
           </span>
           inkwell
         </Link>
-        <nav aria-label="Primary">
+        <form className="header-search" action="/" method="get" role="search" aria-label="Site search"><label className="sr-only" htmlFor="header-search">Search site</label><input id="header-search" name="q" type="search" placeholder="Search" /></form>
+        <nav className="header-nav" aria-label="Primary">
           <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={pathname === "/" ? "active" : ""}>
             Browse
           </Link>

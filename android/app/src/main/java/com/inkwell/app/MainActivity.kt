@@ -5,17 +5,21 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.AutoStories
 import androidx.compose.material.icons.outlined.BookmarkBorder
+import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -48,26 +52,42 @@ fun InkwellApp() {
     val hideBar = route.startsWith("reader") || route == "auth"
 
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.background,
         bottomBar = {
             if (!hideBar) {
-                NavigationBar {
+                NavigationBar(containerColor = Color.White) {
+                    val colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = MaterialTheme.colorScheme.primary,
+                        selectedTextColor = MaterialTheme.colorScheme.primary,
+                        indicatorColor = Color(0xFFFFF3EE),
+                    )
                     NavigationBarItem(
                         selected = route == "browse" || route.startsWith("story"),
                         onClick = { nav.tab("browse") },
-                        icon = { Icon(Icons.Outlined.AutoStories, contentDescription = "Browse") },
-                        label = { Text("Browse") },
+                        icon = { Icon(Icons.Outlined.Home, contentDescription = "Home") },
+                        label = { Text("Home") },
+                        colors = colors,
+                    )
+                    NavigationBarItem(
+                        selected = route == "search",
+                        onClick = { nav.tab("search") },
+                        icon = { Icon(Icons.Outlined.Search, contentDescription = "Search") },
+                        label = { Text("Search") },
+                        colors = colors,
                     )
                     NavigationBarItem(
                         selected = route == "library",
                         onClick = { nav.tab("library") },
                         icon = { Icon(Icons.Outlined.BookmarkBorder, contentDescription = "Library") },
                         label = { Text("Library") },
+                        colors = colors,
                     )
                     NavigationBarItem(
                         selected = route == "profile",
                         onClick = { nav.tab("profile") },
                         icon = { Icon(Icons.Outlined.Person, contentDescription = "You") },
                         label = { Text("You") },
+                        colors = colors,
                     )
                 }
             }
@@ -75,7 +95,10 @@ fun InkwellApp() {
     ) { pad ->
         NavHost(navController = nav, startDestination = "browse", modifier = Modifier.padding(pad)) {
             composable("browse") {
-                BrowseScreen(onOpen = { nav.navigate("story/$it") })
+                BrowseScreen(onOpen = { nav.navigate("story/$it") }, showSearch = false)
+            }
+            composable("search") {
+                BrowseScreen(onOpen = { nav.navigate("story/$it") }, showSearch = true)
             }
             composable(
                 "story/{id}",

@@ -22,7 +22,7 @@ const summarize = (phase) => {
   };
 };
 const result = JSON.parse(fs.readFileSync(path.join(root, '.test-artifacts/results.json'), 'utf8'));
-if (result.stats.unexpected || result.stats.skipped || result.stats.expected !== 38) throw new Error('Expected 38 passing tests with no skips.');
+if (result.stats.unexpected || result.stats.skipped || result.stats.expected !== 39) throw new Error('Expected 39 passing tests with no skips.');
 const lock = JSON.parse(fs.readFileSync(path.join(root, 'package-lock.json'), 'utf8'));
 const report = {
   generatedAt: new Date().toISOString(),
