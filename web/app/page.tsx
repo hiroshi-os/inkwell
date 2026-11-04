@@ -2,7 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { api, type Story } from "@/lib/api";
-import { StoryGrid, StoryCover } from "@/components/StoryCard";
+import { StoryRail, StoryCover } from "@/components/StoryCard";
 import Link from "next/link";
 
 const GENRES = ["All", "Fantasy", "Contemporary", "Mystery"];
@@ -91,7 +91,11 @@ export default function HomePage() {
       <p className="muted" role="status" aria-atomic="true">{busy ? "Loading stories…" : err ? "Stories could not be loaded." : countLabel}</p>
       {err && <p className="err" role="alert">{err}</p>}
       <div aria-busy={busy}>
-        {!busy && !err && <StoryGrid stories={stories} empty={filtered ? "No stories match your search. Try another title or genre." : "No published stories yet. Start writing to share one."} />}
+        {!busy && !err && (stories.length > 0 ? (
+          <StoryRail title={genre === "All" ? "Browse stories" : genre} stories={stories} />
+        ) : (
+          <p className="muted empty">{filtered ? "No stories match your search. Try another title or genre." : "No published stories yet. Start writing to share one."}</p>
+        ))}
       </div>
     </div>
   );

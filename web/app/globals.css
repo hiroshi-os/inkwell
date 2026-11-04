@@ -468,6 +468,8 @@ input, textarea, select { min-width: 0; max-width: 100%; }
 .header-search input { padding-left:14px; }
 nav.header-nav a.btn { background:var(--wp-orange); color:#fff !important; padding:7px 14px; }
 nav.header-nav a.btn:hover { background:var(--wp-orange-hover); }
+.rail { max-width:100%; }
+.reader { background:var(--surface); }
 .hero-aside { color:#444; padding:1rem; background:#f2f2f2; }
 .hero > *, .featured > *, .story-hero > *, .editor-grid > *, nav, nav a, nav button { min-width:0; max-width:100%; }
 .grid { grid-template-columns:repeat(auto-fill,minmax(min(132px,100%),1fr)); }
