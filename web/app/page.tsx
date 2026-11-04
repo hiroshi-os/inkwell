@@ -4,6 +4,7 @@ import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { api, type Story } from "@/lib/api";
 import { StoryRail, StoryCover } from "@/components/StoryCard";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const GENRES = ["All", "Fantasy", "Contemporary", "Mystery"];
 
@@ -68,9 +69,9 @@ export default function HomePage() {
       <form className="toolbar" role="search" aria-label="Story search" onSubmit={onSearch}>
         <label htmlFor="story-search" className="sr-only">Search stories</label>
         <input id="story-search" name="q" type="search" className="search" placeholder="Search titles, synopses, authors" value={q} onChange={(e) => setQ(e.target.value)} />
-        <button className="btn" type="submit">
+        <Button type="submit">
           Search
-        </button>
+        </Button>
         <div className="chips" role="group" aria-label="Genres">
           {GENRES.map((g) => (
             <button
