@@ -1,14 +1,14 @@
 package com.inkwell.app.ui.library
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -16,8 +16,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.inkwell.app.data.Graph
 import com.inkwell.app.data.Story
 import com.inkwell.app.ui.browse.StoryRow
@@ -34,21 +35,17 @@ fun LibraryScreen(onOpen: (String) -> Unit, onLogin: () -> Unit) {
             .onFailure { error = it.message }
     }
 
-    Column(Modifier.fillMaxSize().padding(16.dp)) {
-        Text("Library", style = MaterialTheme.typography.headlineMedium, fontFamily = FontFamily.Serif)
-        Text(
-            "Saved stories. Stub: no offline files, just a server-side shelf.",
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(bottom = 12.dp),
-        )
+    Column(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)) {
+        Text("Library", fontWeight = FontWeight.Bold, fontSize = 22.sp, modifier = Modifier.padding(16.dp))
+        Text("Current Reads", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, modifier = Modifier.padding(horizontal = 16.dp))
         if (!Graph.session.isLoggedIn) {
-            Text("Log in to keep a shelf.")
-            TextButton(onClick = onLogin) { Text("Log in") }
+            Text("Log in to keep stories here.", modifier = Modifier.padding(16.dp))
+            Button(onClick = onLogin, modifier = Modifier.padding(horizontal = 16.dp)) { Text("Log in") }
             return
         }
-        if (error != null) Text(error ?: "", color = MaterialTheme.colorScheme.tertiary)
+        if (error != null) Text(error ?: "", color = MaterialTheme.colorScheme.tertiary, modifier = Modifier.padding(16.dp))
         if (stories.isEmpty()) {
-            Box(Modifier.padding(top = 12.dp)) { Text("Nothing saved yet.") }
+            Text("Nothing saved yet.", modifier = Modifier.padding(16.dp), color = MaterialTheme.colorScheme.secondary)
         } else {
             LazyColumn {
                 items(stories, key = { it.id }) { StoryRow(it) { onOpen(it.id) } }

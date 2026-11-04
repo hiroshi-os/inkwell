@@ -21,18 +21,23 @@ export default function LibraryPage() {
 
   return (
     <div className="wrap">
-      <h1 className="page-title" style={{ marginTop: "1.6rem" }}>
-        Library
-      </h1>
-      <p className="muted">Stories you save show up here. This is the MVP stand-in for a reading list — no offline downloads yet.</p>
+      <div className="section-head" style={{ marginTop: 24 }}>
+        <h2>Library</h2>
+        <span className="see">Current Reads</span>
+      </div>
+      <div className="chips">
+        <span className="chip on">Current Reads</span>
+        <span className="chip">Archive</span>
+        <span className="chip">Reading Lists</span>
+      </div>
       {ready && !authed ? (
         <p>
-          <Link href="/login">Log in</Link> to keep a shelf.
+          <Link href="/login">Log in</Link> to keep stories in your library.
         </p>
       ) : (
         <>
           {err && <p className="err">{err}</p>}
-          <StoryGrid stories={stories} empty={ready ? "Nothing saved yet. Open a story and choose Save to library." : "Loading…"} />
+          <StoryGrid stories={stories} empty={ready ? "Nothing saved yet. Open a story and tap + Add." : "Loading…"} />
         </>
       )}
     </div>

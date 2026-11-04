@@ -2,6 +2,8 @@
 
 Measured locally on 2026-11-04. This is developer-led accessibility engineering and browser verification, **not user research or a WCAG certification**.
 
+The baseline figures and screenshots below describe the earlier accessibility pass, before the web/Android redesign in PR #2. The redesign retains those controls and is verified separately by the current browser suite; do not interpret the earlier screenshots as the new visual design.
+
 ## Changes grounded in baseline findings
 
 - Linked visible labels to login, registration, story, chapter and profile controls. Added registration requirements/autocomplete and explicit search semantics.
@@ -38,7 +40,7 @@ npm run typecheck
 npm run test:ui
 ```
 
-Go must be installed. Tests reserve ports 13000 and 18080 and refuse to reuse an existing server. They launch the Go API and Next test server and stop them after the suite. The checked-in GitHub Actions workflow installs Chromium/Linux dependencies and uploads the resulting scans and test report. A diagnostic baseline uses `AUDIT_BASELINE=1`; its collection assertions are intentionally disabled and must not be cited as passing accessibility checks. `node scripts/summarize-audit.mjs` requires both saved baseline files and a complete final 38-test result.
+Go must be installed. Tests reserve ports 13000 and 18080 and refuse to reuse an existing server. They launch the Go API and Next test server and stop them after the suite. The checked-in GitHub Actions workflow installs Chromium/Linux dependencies and uploads the resulting scans and test report. A diagnostic baseline uses `AUDIT_BASELINE=1`; its collection assertions are intentionally disabled and must not be cited as passing accessibility checks. `node scripts/summarize-audit.mjs` requires both saved baseline files and a complete final 39-test result.
 
 ## Human work still pending
 

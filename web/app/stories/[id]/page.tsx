@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { api, type Story } from "@/lib/api";
 import { useSession } from "@/lib/session";
-import { coverStyle } from "@/components/StoryCard";
+import { StoryCover } from "@/components/StoryCard";
 
 export default function StoryPage({ params }: { params: { id: string } }) {
   const [story, setStory] = useState<Story | null>(null);
@@ -26,7 +26,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
   }, [params.id]);
 
   if (err) return <p className="wrap err">{err}</p>;
-  if (!story) return <p className="wrap muted">Setting type…</p>;
+  if (!story) return <p className="wrap muted">Loading story…</p>;
 
   const first = story.chapters?.find((c) => c.published) || story.chapters?.[0];
   const isAuthor = Boolean(me && me.id === story.author.id);
@@ -58,16 +58,20 @@ export default function StoryPage({ params }: { params: { id: string } }) {
   return (
     <div className="wrap">
       <div className="story-hero">
-        <div className="cover" style={coverStyle(story.coverHue)} />
+        <StoryCover story={story} />
         <div>
-          <p className="kicker">{story.genre || "Story"}</p>
           <h1>{story.title}</h1>
           <p className="byline">
-            by <Link href={`/u/${story.author.username}`}>{story.author.displayName}</Link> · {story.chapterCount} published chapters
+            by <Link href={`/u/${story.author.username}`}>{story.author.displayName}</Link>
           </p>
-          <p className="lede" style={{ marginTop: "0.8rem" }}>
-            {story.synopsis}
+          <div className="chips" style={{ marginTop: 8 }}>
+            <span className="chip on">{story.genre || "Story"}</span>
+            <span className="chip">{story.status === "published" ? "Ongoing" : "Draft"}</span>
+          </div>
+          <p className="story-meta">
+            <span>{story.chapterCount} chapters</span>
           </p>
+          <p className="lede">{story.synopsis}</p>
           <div className="actions">
             {first && (
               <Link className="btn" href={`/stories/${story.id}/read/${first.id}`}>
@@ -76,7 +80,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
             )}
             {isAuthor && (
               <Link className="btn ghost" href={`/write/${story.id}`}>
-                Edit story
+                Edit
               </Link>
             )}
             {authed ? (
@@ -91,12 +95,12 @@ export default function StoryPage({ params }: { params: { id: string } }) {
                 )}
               </>
             ) : (
-              <Link href="/login">Log in to follow or save</Link>
+              <Link href="/login">Log in to follow or add</Link>
             )}
           </div>
         </div>
       </div>
-      <h2 className="page-title">Chapters</h2>
+      <h2 className="toc-title">Table of Contents</h2>
       <ul className="chapter-list">
         {(story.chapters || []).map((c) => (
           <li key={c.id}>

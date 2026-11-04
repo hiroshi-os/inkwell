@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api, type Story } from "@/lib/api";
 import { useSession } from "@/lib/session";
-import { StoryGrid } from "@/components/StoryCard";
+import { StoryRail } from "@/components/StoryCard";
 
 export default function FeedPage() {
   const { authed, ready } = useSession();
@@ -21,18 +21,18 @@ export default function FeedPage() {
 
   return (
     <div className="wrap">
-      <h1 className="page-title" style={{ marginTop: "1.6rem" }}>
-        Following
-      </h1>
-      <p className="muted">Recent published work from authors you follow. Ranked newest-first — no ML ranking in the MVP.</p>
+      <div className="section-head" style={{ marginTop: 24 }}>
+        <h2>Following</h2>
+      </div>
       {ready && !authed ? (
         <p>
-          <Link href="/login">Log in</Link> to assemble a feed.
+          <Link href="/login">Log in</Link> to see updates from people you follow.
         </p>
       ) : (
         <>
           {err && <p className="err">{err}</p>}
-          <StoryGrid stories={stories} empty={ready ? "Follow an author from a story page. Seed user reader already follows iris." : "Loading…"} />
+          <StoryRail title="From authors you follow" stories={stories} />
+          {!stories.length && ready && <p className="muted empty">Follow an author from a story page.</p>}
         </>
       )}
     </div>
