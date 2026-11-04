@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Story } from "@/lib/api";
-import { compact, storyStats } from "@/lib/format";
 
 export function coverStyle(hue: number): CSSProperties {
   return {
@@ -19,17 +18,13 @@ export function StoryCover({ story, className = "" }: { story: Pick<Story, "titl
 }
 
 export function StoryCard({ story }: { story: Story }) {
-  const stats = storyStats(story);
   return (
     <Link href={`/stories/${story.id}`} className="story-card portrait">
       <StoryCover story={story} />
       <div className="card-body">
         <h3>{story.title}</h3>
         <p className="byline">{story.author.displayName}</p>
-        <p className="stats">
-          <span>👁 {compact(stats.reads)}</span>
-          <span>★ {compact(stats.votes)}</span>
-        </p>
+        <p className="stats">{story.chapterCount} chapters</p>
       </div>
     </Link>
   );

@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Source_Sans_3 } from "next/font/google";
+import { Figtree, Fraunces } from "next/font/google";
 import { Header } from "@/components/Header";
 import "./globals.css";
 
-const sans = Source_Sans_3({ subsets: ["latin"], variable: "--sans" });
+const sans = Figtree({ subsets: ["latin"], variable: "--sans" });
+const serif = Fraunces({ subsets: ["latin"], variable: "--serif" });
 
 export const metadata: Metadata = {
-  title: "Inkwell — Stories you'll obsess over",
-  description: "Read and write serialized stories. Browse, follow, and keep a library.",
+  title: "Inkwell — stories, serialized",
+  description: "A small storytelling platform for serialized fiction. Browse, read, follow, write.",
   icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={sans.variable} style={{ fontFamily: "var(--sans)" }}>
+      <body className={`${sans.variable} ${serif.variable}`}>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="site-footer">
-          <div className="wrap">Inkwell · read, write, obsess.</div>
+          <div className="wrap">Inkwell MVP · original fiction, not a Wattpad clone.</div>
         </footer>
       </body>
     </html>

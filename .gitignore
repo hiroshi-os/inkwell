@@ -9,10 +9,14 @@ api/coverage.out
 # Web
 web/node_modules
 web/.next
+web/.next-test/
 web/out
 web/.env.local
 web/.turbo
 web/tsconfig.tsbuildinfo
+web/.test-artifacts/
+web/test-results/
+web/playwright-report/
 
 # Android
 android/.gradle

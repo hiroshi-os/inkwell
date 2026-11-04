@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { api, type Story } from "@/lib/api";
 import { useSession } from "@/lib/session";
 import { StoryCover } from "@/components/StoryCard";
-import { compact, storyStats } from "@/lib/format";
 
 export default function StoryPage({ params }: { params: { id: string } }) {
   const [story, setStory] = useState<Story | null>(null);
@@ -31,7 +30,6 @@ export default function StoryPage({ params }: { params: { id: string } }) {
 
   const first = story.chapters?.find((c) => c.published) || story.chapters?.[0];
   const isAuthor = Boolean(me && me.id === story.author.id);
-  const stats = storyStats(story);
 
   const toggleLibrary = async () => {
     if (!authed) return;
@@ -71,9 +69,7 @@ export default function StoryPage({ params }: { params: { id: string } }) {
             <span className="chip">{story.status === "published" ? "Ongoing" : "Draft"}</span>
           </div>
           <p className="story-meta">
-            <span>👁 {compact(stats.reads)} Reads</span>
-            <span>★ {compact(stats.votes)} Votes</span>
-            <span>☰ {stats.parts} Parts</span>
+            <span>{story.chapterCount} chapters</span>
           </p>
           <p className="lede">{story.synopsis}</p>
           <div className="actions">
@@ -90,11 +86,11 @@ export default function StoryPage({ params }: { params: { id: string } }) {
             {authed ? (
               <>
                 <button className="btn ghost" disabled={busy} onClick={toggleLibrary}>
-                  {story.inLibrary ? "Added" : "+ Add"}
+                  {story.inLibrary ? "In library" : "Save to library"}
                 </button>
                 {!isAuthor && (
                   <button className="btn ghost" disabled={busy} onClick={toggleFollow}>
-                    {story.followingAuthor ? "Following" : "Follow"}
+                    {story.followingAuthor ? "Following" : "Follow author"}
                   </button>
                 )}
               </>

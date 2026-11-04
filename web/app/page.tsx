@@ -1,111 +1,98 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { api, type Story } from "@/lib/api";
-import { StoryCover, StoryRail } from "@/components/StoryCard";
-import { compact, storyStats } from "@/lib/format";
-import { Suspense } from "react";
+import { StoryGrid, StoryCover } from "@/components/StoryCard";
+import Link from "next/link";
 
-const GENRES = ["All", "Fantasy", "Contemporary", "Mystery", "Romance", "Sci-Fi"];
+const GENRES = ["All", "Fantasy", "Contemporary", "Mystery"];
 
-function HomeInner() {
-  const params = useSearchParams();
-  const initialQ = params.get("q") || "";
+export default function HomePage() {
   const [stories, setStories] = useState<Story[]>([]);
-  const [q, setQ] = useState(initialQ);
+  const [q, setQ] = useState("");
   const [genre, setGenre] = useState("All");
   const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(true);
+  const [filtered, setFiltered] = useState(false);
+  const latestRequest = useRef(0);
 
-  const load = async (query = q, g = genre) => {
+  const load = useCallback(async (query: string, g: string) => {
+    const requestId = ++latestRequest.current;
+    setBusy(true);
+    setErr("");
+    setFiltered(Boolean(query.trim()) || g !== "All");
     try {
-      setErr("");
       const data = await api.stories(query, g === "All" ? "" : g);
+      if (requestId !== latestRequest.current) return;
       setStories(data.stories);
     } catch (e) {
+      if (requestId !== latestRequest.current) return;
       setErr(e instanceof Error ? e.message : "Could not load stories");
+    } finally {
+      if (requestId === latestRequest.current) setBusy(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
+    const initialQ = new URLSearchParams(window.location.search).get("q") || "";
     setQ(initialQ);
     load(initialQ, "All");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialQ]);
+    return () => { latestRequest.current += 1; };
+  }, [load]);
 
-  const featured = stories[0];
-  const featuredStats = featured ? storyStats(featured) : null;
-  const byGenre = useMemo(() => {
-    const groups: Record<string, Story[]> = {};
-    for (const s of stories) {
-      const g = s.genre || "Other";
-      (groups[g] ||= []).push(s);
-    }
-    return groups;
-  }, [stories]);
+  const onSearch = (e: FormEvent) => {
+    e.preventDefault();
+    load(q, genre);
+  };
+
+  const countLabel = `${stories.length} published ${stories.length === 1 ? "story" : "stories"}`;
 
   return (
     <div className="wrap">
-      {featured && !q && genre === "All" && (
-        <section className="discover-hero">
-          <p className="kicker">Featured</p>
-          <div className="featured">
-            <StoryCover story={featured} />
-            <div>
-              <h1>{featured.title}</h1>
-              <p className="byline">
-                by <Link href={`/u/${featured.author.username}`}>{featured.author.displayName}</Link>
-              </p>
-              <p className="muted">
-                {compact(featuredStats!.reads)} Reads · {compact(featuredStats!.votes)} Votes · {featuredStats!.parts} Parts
-              </p>
-              <p className="synopsis">{featured.synopsis}</p>
-              <Link className="btn" href={`/stories/${featured.id}`}>
-                Start reading
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
-
-      <div className="chips">
-        {GENRES.map((g) => (
-          <button
-            key={g}
-            type="button"
-            className={`chip ${genre === g ? "on" : ""}`}
-            onClick={() => {
-              setGenre(g);
-              load(q, g);
-            }}
-          >
-            {g}
-          </button>
-        ))}
-      </div>
-      {err && <p className="err">{err}</p>}
-      {q && <p className="muted">Results for “{q}”</p>}
-
-      {!q && genre === "All" ? (
-        <>
-          <StoryRail title="Trending" stories={stories} />
-          {Object.entries(byGenre).map(([g, list]) => (
-            <StoryRail key={g} title={g} stories={list} />
+      <section className="hero discover-hero">
+        <div>
+          <p className="kicker">Serialized fiction</p>
+          <h1>Stories that linger after the lamp is out.</h1>
+          <p className="lede">
+            Inkwell is a small reading room for chaptered fiction — browse public stories, follow authors, keep a library, or write your own.
+          </p>
+        </div>
+        {stories[0] && !filtered && <aside className="featured"><StoryCover story={stories[0]} /><div><p className="kicker">Featured</p><h2>{stories[0].title}</h2><p>{stories[0].synopsis}</p><Link className="btn" href={`/stories/${stories[0].id}`}>View story</Link></div></aside>}
+        <aside className="hero-aside">
+          <h2>Demo shelf</h2>
+          <p>
+            Try <strong>iris</strong>, <strong>niko</strong>, or <strong>reader</strong> with the demo password <code>password123</code>.
+          </p>
+        </aside>
+      </section>
+      <form className="toolbar" role="search" aria-label="Story search" onSubmit={onSearch}>
+        <label htmlFor="story-search" className="sr-only">Search stories</label>
+        <input id="story-search" name="q" type="search" className="search" placeholder="Search titles, synopses, authors" value={q} onChange={(e) => setQ(e.target.value)} />
+        <button className="btn" type="submit">
+          Search
+        </button>
+        <div className="chips" role="group" aria-label="Genres">
+          {GENRES.map((g) => (
+            <button
+              key={g}
+              type="button"
+              className={`chip ${genre === g ? "on" : ""}`}
+              aria-pressed={genre === g}
+              onClick={() => {
+                setGenre(g);
+                load(q, g);
+              }}
+            >
+              {g}
+            </button>
           ))}
-        </>
-      ) : (
-        <StoryRail title={genre === "All" ? "Stories" : genre} stories={stories} />
-      )}
-      {!stories.length && <p className="muted empty">No stories yet. Start the API or write one.</p>}
+        </div>
+      </form>
+      <p className="muted" role="status" aria-atomic="true">{busy ? "Loading stories…" : err ? "Stories could not be loaded." : countLabel}</p>
+      {err && <p className="err" role="alert">{err}</p>}
+      <div aria-busy={busy}>
+        {!busy && !err && <StoryGrid stories={stories} empty={filtered ? "No stories match your search. Try another title or genre." : "No published stories yet. Start writing to share one."} />}
+      </div>
     </div>
-  );
-}
-
-export default function HomePage() {
-  return (
-    <Suspense fallback={<p className="wrap muted">Loading…</p>}>
-      <HomeInner />
-    </Suspense>
   );
 }

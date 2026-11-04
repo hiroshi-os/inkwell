@@ -16,6 +16,20 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
   const [active, setActive] = useState<ChapterMeta | null>(null);
   const [err, setErr] = useState("");
   const [msg, setMsg] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const runAction = async (action: () => Promise<void>) => {
+    setErr("");
+    setMsg("");
+    setBusy(true);
+    try {
+      await action();
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "The change could not be saved. Try again.");
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const load = async () => {
     const st = await api.story(params.id);
@@ -37,13 +51,11 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
 
   const saveMeta = async (e: FormEvent) => {
     e.preventDefault();
-    try {
+    await runAction(async () => {
       await api.updateStory(params.id, { title, synopsis, genre, status });
       setMsg("Story details saved.");
       await load();
-    } catch (e) {
-      setErr(e instanceof Error ? e.message : "Save failed");
-    }
+    });
   };
 
   const selectChapter = async (c: ChapterMeta) => {
@@ -73,39 +85,37 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
     router.push("/write");
   };
 
-  if (!story) return <p className="wrap muted">Opening the manuscript…</p>;
+  if (!story) return <p className={err ? "wrap err" : "wrap muted"} role={err ? "alert" : "status"}>{err || "Opening the manuscript…"}</p>;
 
   return (
     <div className="wrap" style={{ paddingTop: "1.4rem", paddingBottom: "3rem" }}>
-      <div className="section-head">
-        <h2>Edit story</h2>
-      </div>
+      <h1 className="page-title">Edit story</h1>
       <form onSubmit={saveMeta} className="stack" style={{ marginBottom: "1.4rem" }}>
-        <label>Title</label>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} />
-        <label>Genre</label>
-        <input value={genre} onChange={(e) => setGenre(e.target.value)} />
-        <label>Synopsis</label>
-        <textarea style={{ minHeight: 90 }} value={synopsis} onChange={(e) => setSynopsis(e.target.value)} />
-        <label>Status</label>
-        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+        <label htmlFor="story-title">Title</label>
+        <input id="story-title" required value={title} onChange={(e) => setTitle(e.target.value)} />
+        <label htmlFor="story-genre">Genre</label>
+        <input id="story-genre" value={genre} onChange={(e) => setGenre(e.target.value)} />
+        <label htmlFor="story-synopsis">Synopsis</label>
+        <textarea id="story-synopsis" style={{ minHeight: 90 }} value={synopsis} onChange={(e) => setSynopsis(e.target.value)} />
+        <label htmlFor="story-status">Status</label>
+        <select id="story-status" value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="published">published</option>
           <option value="draft">draft</option>
         </select>
         <div className="actions">
-          <button className="btn">Save details</button>
-          <button type="button" className="btn danger" onClick={removeStory}>
+          <button className="btn" disabled={busy}>Save details</button>
+          <button type="button" className="btn danger" disabled={busy} onClick={() => runAction(removeStory)}>
             Delete story
           </button>
         </div>
       </form>
       <div className="editor-grid">
-        <aside className="chapter-nav">
-          <button className="btn ghost full" type="button" onClick={newChapter}>
+        <aside className="chapter-nav" aria-label="Story chapters">
+          <button className="btn ghost full" type="button" disabled={busy} onClick={() => runAction(newChapter)}>
             + Chapter
           </button>
           {(story.chapters || []).map((c) => (
-            <button key={c.id} type="button" onClick={() => selectChapter(c)}>
+            <button key={c.id} type="button" aria-pressed={active?.id === c.id} disabled={busy} onClick={() => runAction(() => selectChapter(c))}>
               {c.position}. {c.title}
             </button>
           ))}
@@ -113,12 +123,12 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
         <section>
           {active ? (
             <>
-              <label>Chapter title</label>
-              <input className="full" value={chTitle} onChange={(e) => setChTitle(e.target.value)} />
-              <label>Body</label>
-              <textarea value={chBody} onChange={(e) => setChBody(e.target.value)} />
+              <label htmlFor="chapter-title">Chapter title</label>
+              <input id="chapter-title" className="full" value={chTitle} onChange={(e) => setChTitle(e.target.value)} />
+              <label htmlFor="chapter-body">Body</label>
+              <textarea id="chapter-body" value={chBody} onChange={(e) => setChBody(e.target.value)} />
               <div className="actions">
-                <button className="btn" type="button" onClick={saveChapter}>
+                <button className="btn" type="button" disabled={busy} onClick={() => runAction(saveChapter)}>
                   Save chapter
                 </button>
               </div>
@@ -126,8 +136,8 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
           ) : (
             <p className="muted">Select a chapter or add one.</p>
           )}
-          {msg && <p className="muted">{msg}</p>}
-          {err && <p className="err">{err}</p>}
+          <p className="muted" role="status">{busy ? "Saving…" : msg}</p>
+          {err && <p className="err" role="alert">{err}</p>}
         </section>
       </div>
     </div>

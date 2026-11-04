@@ -3,13 +3,9 @@ package com.inkwell.app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.BookmarkBorder
-import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material.icons.outlined.Search
@@ -24,9 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -90,13 +83,6 @@ fun InkwellApp() {
                         colors = colors,
                     )
                     NavigationBarItem(
-                        selected = route == "write",
-                        onClick = { nav.tab("write") },
-                        icon = { Icon(Icons.Outlined.Create, contentDescription = "Write") },
-                        label = { Text("Write") },
-                        colors = colors,
-                    )
-                    NavigationBarItem(
                         selected = route == "profile",
                         onClick = { nav.tab("profile") },
                         icon = { Icon(Icons.Outlined.Person, contentDescription = "You") },
@@ -144,7 +130,6 @@ fun InkwellApp() {
             composable("library") {
                 LibraryScreen(onOpen = { nav.navigate("story/$it") }, onLogin = { nav.navigate("auth") })
             }
-            composable("write") { WriteStub() }
             composable("profile") {
                 ProfileScreen(onLogin = { nav.navigate("auth") }, onLoggedOut = {})
             }
@@ -155,23 +140,6 @@ fun InkwellApp() {
                 })
             }
         }
-    }
-}
-
-@Composable
-private fun WriteStub() {
-    Column(
-        Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .padding(16.dp),
-    ) {
-        Text("Write", fontWeight = FontWeight.Bold, fontSize = 22.sp)
-        Text(
-            "Story and chapter editing is on the web app for this MVP. Open localhost:3000/write after you log in.",
-            color = MaterialTheme.colorScheme.secondary,
-            modifier = Modifier.padding(top = 8.dp),
-        )
     }
 }
 
