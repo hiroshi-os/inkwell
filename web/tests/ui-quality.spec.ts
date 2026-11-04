@@ -50,6 +50,13 @@ for (const width of widths) {
     test(`${name} at ${width}px: accessibility and reflow`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await open(page, name);
+      if (!routes.find((r) => r.name === name)!.auth) {
+        const join = page.getByRole('link', { name: 'Join', exact: true });
+        await expect(join).toBeVisible();
+        const colors = await join.evaluate((e) => [getComputedStyle(e).color, getComputedStyle(e).backgroundColor]);
+        expect(colors[0]).not.toBe(colors[1]);
+        expect(colors[1]).not.toBe('rgba(0, 0, 0, 0)');
+      }
       const scan = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
       const overflow = await page.evaluate(() => ({
         viewport: document.documentElement.clientWidth,
@@ -75,6 +82,8 @@ test('keyboard bypass reaches the main content and search controls', async ({ pa
   await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.locator('#main-content')).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('link', { name: 'View story' })).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.getByRole('searchbox', { name: 'Search stories' })).toBeFocused();
   expect(await page.getByRole('searchbox', { name: 'Search stories' }).evaluate((e) => getComputedStyle(e).outlineWidth)).toBe('3px');
@@ -128,6 +137,21 @@ test('search, genre selection and no-results state use real API data', async ({ 
   await page.getByRole('button', { name: 'Fantasy', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Fantasy', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await expect(page.locator('.story-card').first()).toBeVisible();
+});
+
+test('header search shows real matching stories without invented engagement counts', async ({ page }) => {
+  test.skip(baseline);
+  await open(page, 'browse');
+  const search = page.getByRole('searchbox', { name: 'Search site' });
+  await search.fill(story.title);
+  await search.press('Enter');
+  await expect(page.locator('.story-card')).toHaveCount(1);
+  await expect(page.locator('.story-card')).toContainText(story.title);
+  await expect(page.getByText(/\d[\d,.]*\s+(Reads|Votes)/i)).toHaveCount(0);
+  await page.locator('.story-card').first().click();
+  await expect(page.getByRole('heading', { name: story.title, exact: true })).toBeVisible();
+  await expect(page.getByText(/\d[\d,.]*\s+(Reads|Votes)/i)).toHaveCount(0);
+  await expect(page.getByText(`${story.chapterCount} chapters`, { exact: true })).toBeVisible();
 });
 
 test('login error is announced and the form works using labels and keyboard', async ({ page }) => {

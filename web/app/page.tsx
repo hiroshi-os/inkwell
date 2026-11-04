@@ -2,7 +2,8 @@
 
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { api, type Story } from "@/lib/api";
-import { StoryGrid } from "@/components/StoryCard";
+import { StoryRail, StoryCover } from "@/components/StoryCard";
+import Link from "next/link";
 
 const GENRES = ["All", "Fantasy", "Contemporary", "Mystery"];
 
@@ -33,7 +34,9 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-    load("", "All");
+    const initialQ = new URLSearchParams(window.location.search).get("q") || "";
+    setQ(initialQ);
+    load(initialQ, "All");
     return () => { latestRequest.current += 1; };
   }, [load]);
 
@@ -46,7 +49,7 @@ export default function HomePage() {
 
   return (
     <div className="wrap">
-      <section className="hero">
+      <section className="hero discover-hero">
         <div>
           <p className="kicker">Serialized fiction</p>
           <h1>Stories that linger after the lamp is out.</h1>
@@ -54,6 +57,7 @@ export default function HomePage() {
             Inkwell is a small reading room for chaptered fiction — browse public stories, follow authors, keep a library, or write your own.
           </p>
         </div>
+        {stories[0] && !filtered && <aside className="featured"><StoryCover story={stories[0]} /><div><p className="kicker">Featured</p><h2>{stories[0].title}</h2><p>{stories[0].synopsis}</p><Link className="btn" href={`/stories/${stories[0].id}`}>View story</Link></div></aside>}
         <aside className="hero-aside">
           <h2>Demo shelf</h2>
           <p>
@@ -87,7 +91,11 @@ export default function HomePage() {
       <p className="muted" role="status" aria-atomic="true">{busy ? "Loading stories…" : err ? "Stories could not be loaded." : countLabel}</p>
       {err && <p className="err" role="alert">{err}</p>}
       <div aria-busy={busy}>
-        {!busy && !err && <StoryGrid stories={stories} empty={filtered ? "No stories match your search. Try another title or genre." : "No published stories yet. Start writing to share one."} />}
+        {!busy && !err && (stories.length > 0 ? (
+          <StoryRail title={genre === "All" ? "Browse stories" : genre} stories={stories} />
+        ) : (
+          <p className="muted empty">{filtered ? "No stories match your search. Try another title or genre." : "No published stories yet. Start writing to share one."}</p>
+        ))}
       </div>
     </div>
   );
