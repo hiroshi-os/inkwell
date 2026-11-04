@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Compass, Bookmark, PenSquare, User as UserIcon } from "lucide-react";
+import { Compass, Bookmark, PenSquare, User as UserIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { clearSession } from "@/lib/api";
 import { useSession } from "@/lib/session";
@@ -22,7 +22,11 @@ export function Header() {
       <div className="row">
         <Link href="/" className="wordmark">
           <span className="nib" aria-hidden="true">
-            <BookOpen size={18} strokeWidth={2.5} />
+            <span className="dots-trio">
+              <span className="dot-item dot-amber" />
+              <span className="dot-item dot-green" />
+              <span className="dot-item dot-cyan" />
+            </span>
           </span>
           <span className="wordmark-text">inkwell</span>
         </Link>
@@ -45,7 +49,7 @@ export function Header() {
             aria-current={pathname === "/" ? "page" : undefined}
             className={pathname === "/" ? "active" : ""}
           >
-            <Compass size={16} aria-hidden="true" />
+            <Compass size={15} aria-hidden="true" />
             <span>Browse</span>
           </Link>
 
@@ -64,7 +68,7 @@ export function Header() {
             aria-current={pathname === "/library" ? "page" : undefined}
             className={pathname === "/library" ? "active" : ""}
           >
-            <Bookmark size={16} aria-hidden="true" />
+            <Bookmark size={15} aria-hidden="true" />
             <span>Library</span>
           </Link>
 
@@ -75,7 +79,7 @@ export function Header() {
                 aria-current={pathname?.startsWith("/write") ? "page" : undefined}
                 className={pathname?.startsWith("/write") ? "active" : ""}
               >
-                <PenSquare size={16} aria-hidden="true" />
+                <PenSquare size={15} aria-hidden="true" />
                 <span>Write</span>
               </Link>
               <Link
@@ -83,7 +87,7 @@ export function Header() {
                 aria-current={pathname === "/me" ? "page" : undefined}
                 className={pathname === "/me" ? "active" : ""}
               >
-                <UserIcon size={16} aria-hidden="true" />
+                <UserIcon size={15} aria-hidden="true" />
                 <span>{user.displayName}</span>
               </Link>
               <button type="button" className="linkish" onClick={logout}>
