@@ -17,8 +17,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={`${sans.variable} ${serif.variable}`}>
+        <a className="skip-link" href="#main-content">Skip to content</a>
         <Header />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="site-footer">
           <div className="wrap">Inkwell MVP · original fiction, not a Wattpad clone.</div>
         </footer>

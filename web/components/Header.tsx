@@ -25,24 +25,24 @@ export function Header() {
           </span>
           inkwell
         </Link>
-        <nav>
-          <Link href="/" className={pathname === "/" ? "active" : ""}>
+        <nav aria-label="Primary">
+          <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={pathname === "/" ? "active" : ""}>
             Browse
           </Link>
           {ready && user && (
-            <Link href="/feed" className={pathname === "/feed" ? "active" : ""}>
+            <Link href="/feed" aria-current={pathname === "/feed" ? "page" : undefined} className={pathname === "/feed" ? "active" : ""}>
               Following
             </Link>
           )}
-          <Link href="/library" className={pathname === "/library" ? "active" : ""}>
+          <Link href="/library" aria-current={pathname === "/library" ? "page" : undefined} className={pathname === "/library" ? "active" : ""}>
             Library
           </Link>
           {ready && user ? (
             <>
-              <Link href="/write" className={pathname?.startsWith("/write") ? "active" : ""}>
+              <Link href="/write" aria-current={pathname?.startsWith("/write") ? "page" : undefined} className={pathname?.startsWith("/write") ? "active" : ""}>
                 Write
               </Link>
-              <Link href="/me" className={pathname === "/me" ? "active" : ""}>
+              <Link href="/me" aria-current={pathname === "/me" ? "page" : undefined} className={pathname === "/me" ? "active" : ""}>
                 {user.displayName}
               </Link>
               <button className="linkish" onClick={logout}>
@@ -51,8 +51,8 @@ export function Header() {
             </>
           ) : (
             <>
-              <Link href="/login">Log in</Link>
-              <Link href="/register" className="btn btn-small">
+              <Link href="/login" aria-current={pathname === "/login" ? "page" : undefined}>Log in</Link>
+              <Link href="/register" aria-current={pathname === "/register" ? "page" : undefined} className="btn btn-small">
                 Join
               </Link>
             </>
