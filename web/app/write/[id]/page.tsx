@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api, getToken, type ChapterMeta, type Story } from "@/lib/api";
+import { Plus, Trash2, Save, FileText, Clock, PenTool } from "lucide-react";
 
 export default function WriteStoryPage({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -87,32 +88,49 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
 
   if (!story) return <p className={err ? "wrap err" : "wrap muted"} role={err ? "alert" : "status"}>{err || "Opening the manuscript…"}</p>;
 
+  const currentWords = chBody.split(/\s+/).filter(Boolean).length;
+  const currentReadMins = Math.max(1, Math.round(currentWords / 200));
+
   return (
-    <div className="wrap" style={{ paddingTop: "1.4rem", paddingBottom: "3rem" }}>
-      <h1 className="page-title">Edit story</h1>
-      <form onSubmit={saveMeta} className="stack" style={{ marginBottom: "1.4rem" }}>
+    <div className="wrap" style={{ paddingTop: "1.5rem", paddingBottom: "3rem" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <PenTool size={22} className="kicker" aria-hidden="true" style={{ margin: 0 }} />
+        <h1 className="page-title">Edit story</h1>
+      </div>
+
+      <form onSubmit={saveMeta} className="stack" style={{ marginBottom: "2rem" }}>
         <label htmlFor="story-title">Title</label>
         <input id="story-title" required value={title} onChange={(e) => setTitle(e.target.value)} />
+
         <label htmlFor="story-genre">Genre</label>
         <input id="story-genre" value={genre} onChange={(e) => setGenre(e.target.value)} />
+
         <label htmlFor="story-synopsis">Synopsis</label>
         <textarea id="story-synopsis" style={{ minHeight: 90 }} value={synopsis} onChange={(e) => setSynopsis(e.target.value)} />
+
         <label htmlFor="story-status">Status</label>
         <select id="story-status" value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="published">published</option>
           <option value="draft">draft</option>
         </select>
+
         <div className="actions">
-          <button className="btn" disabled={busy}>Save details</button>
+          <button className="btn" disabled={busy}>
+            <Save size={16} aria-hidden="true" />
+            <span>Save details</span>
+          </button>
           <button type="button" className="btn danger" disabled={busy} onClick={() => runAction(removeStory)}>
-            Delete story
+            <Trash2 size={16} aria-hidden="true" />
+            <span>Delete story</span>
           </button>
         </div>
       </form>
+
       <div className="editor-grid">
         <aside className="chapter-nav" aria-label="Story chapters">
           <button className="btn ghost full" type="button" disabled={busy} onClick={() => runAction(newChapter)}>
-            + Chapter
+            <Plus size={16} aria-hidden="true" />
+            <span>+ Chapter</span>
           </button>
           {(story.chapters || []).map((c) => (
             <button key={c.id} type="button" aria-pressed={active?.id === c.id} disabled={busy} onClick={() => runAction(() => selectChapter(c))}>
@@ -120,23 +138,36 @@ export default function WriteStoryPage({ params }: { params: { id: string } }) {
             </button>
           ))}
         </aside>
+
         <section>
           {active ? (
             <>
-              <label htmlFor="chapter-title">Chapter title</label>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap" }}>
+                <label htmlFor="chapter-title">Chapter title</label>
+                <span className="muted" style={{ fontSize: 13, display: "inline-flex", gap: 10, alignItems: "center" }}>
+                  <span><FileText size={13} style={{ display: "inline", verticalAlign: "middle" }} /> {currentWords} words</span>
+                  <span><Clock size={13} style={{ display: "inline", verticalAlign: "middle" }} /> ~{currentReadMins} min read</span>
+                </span>
+              </div>
               <input id="chapter-title" className="full" value={chTitle} onChange={(e) => setChTitle(e.target.value)} />
+
               <label htmlFor="chapter-body">Body</label>
-              <textarea id="chapter-body" value={chBody} onChange={(e) => setChBody(e.target.value)} />
+              <textarea id="chapter-body" value={chBody} onChange={(e) => setChBody(e.target.value)} style={{ minHeight: 340 }} />
+
               <div className="actions">
                 <button className="btn" type="button" disabled={busy} onClick={() => runAction(saveChapter)}>
-                  Save chapter
+                  <Save size={16} aria-hidden="true" />
+                  <span>Save chapter</span>
                 </button>
               </div>
             </>
           ) : (
-            <p className="muted">Select a chapter or add one.</p>
+            <div className="panel" style={{ textAlign: "center", margin: "20px 0" }}>
+              <FileText size={32} className="kicker" aria-hidden="true" style={{ margin: "0 auto 8px" }} />
+              <p className="muted">Select a chapter from the list or click &quot;+ Chapter&quot; to begin writing.</p>
+            </div>
           )}
-          <p className="muted" role="status">{busy ? "Saving…" : msg}</p>
+          <p className="muted" role="status" style={{ marginTop: 12 }}>{busy ? "Saving…" : msg}</p>
           {err && <p className="err" role="alert">{err}</p>}
         </section>
       </div>

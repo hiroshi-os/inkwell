@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
-
+import { BookOpen, Compass, Bookmark, PenSquare, User as UserIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { clearSession } from "@/lib/api";
 import { useSession } from "@/lib/session";
@@ -22,40 +21,88 @@ export function Header() {
     <header className="site-header">
       <div className="row">
         <Link href="/" className="wordmark">
-          <span className="nib" aria-hidden>
-            <BookOpen size={20} aria-hidden="true" />
+          <span className="nib" aria-hidden="true">
+            <BookOpen size={18} strokeWidth={2.5} />
           </span>
-          inkwell
+          <span className="wordmark-text">inkwell</span>
         </Link>
-        <form className="header-search" action="/" method="get" role="search" aria-label="Site search"><label className="sr-only" htmlFor="header-search">Search site</label><input id="header-search" name="q" type="search" placeholder="Search" /></form>
+
+        <form className="header-search" action="/" method="get" role="search" aria-label="Site search">
+          <label className="sr-only" htmlFor="header-search">
+            Search site
+          </label>
+          <input
+            id="header-search"
+            name="q"
+            type="search"
+            placeholder="Search stories, genres, authors…"
+          />
+        </form>
+
         <nav className="header-nav" aria-label="Primary">
-          <Link href="/" aria-current={pathname === "/" ? "page" : undefined} className={pathname === "/" ? "active" : ""}>
-            Browse
+          <Link
+            href="/"
+            aria-current={pathname === "/" ? "page" : undefined}
+            className={pathname === "/" ? "active" : ""}
+          >
+            <Compass size={16} aria-hidden="true" />
+            <span>Browse</span>
           </Link>
+
           {ready && user && (
-            <Link href="/feed" aria-current={pathname === "/feed" ? "page" : undefined} className={pathname === "/feed" ? "active" : ""}>
-              Following
+            <Link
+              href="/feed"
+              aria-current={pathname === "/feed" ? "page" : undefined}
+              className={pathname === "/feed" ? "active" : ""}
+            >
+              <span>Following</span>
             </Link>
           )}
-          <Link href="/library" aria-current={pathname === "/library" ? "page" : undefined} className={pathname === "/library" ? "active" : ""}>
-            Library
+
+          <Link
+            href="/library"
+            aria-current={pathname === "/library" ? "page" : undefined}
+            className={pathname === "/library" ? "active" : ""}
+          >
+            <Bookmark size={16} aria-hidden="true" />
+            <span>Library</span>
           </Link>
+
           {ready && user ? (
             <>
-              <Link href="/write" aria-current={pathname?.startsWith("/write") ? "page" : undefined} className={pathname?.startsWith("/write") ? "active" : ""}>
-                Write
+              <Link
+                href="/write"
+                aria-current={pathname?.startsWith("/write") ? "page" : undefined}
+                className={pathname?.startsWith("/write") ? "active" : ""}
+              >
+                <PenSquare size={16} aria-hidden="true" />
+                <span>Write</span>
               </Link>
-              <Link href="/me" aria-current={pathname === "/me" ? "page" : undefined} className={pathname === "/me" ? "active" : ""}>
-                {user.displayName}
+              <Link
+                href="/me"
+                aria-current={pathname === "/me" ? "page" : undefined}
+                className={pathname === "/me" ? "active" : ""}
+              >
+                <UserIcon size={16} aria-hidden="true" />
+                <span>{user.displayName}</span>
               </Link>
-              <button className="linkish" onClick={logout}>
+              <button type="button" className="linkish" onClick={logout}>
                 Log out
               </button>
             </>
           ) : (
             <>
-              <Link href="/login" aria-current={pathname === "/login" ? "page" : undefined}>Log in</Link>
-              <Link href="/register" aria-current={pathname === "/register" ? "page" : undefined} className="btn btn-small">
+              <Link
+                href="/login"
+                aria-current={pathname === "/login" ? "page" : undefined}
+              >
+                Log in
+              </Link>
+              <Link
+                href="/register"
+                aria-current={pathname === "/register" ? "page" : undefined}
+                className="btn btn-small"
+              >
                 Join
               </Link>
             </>

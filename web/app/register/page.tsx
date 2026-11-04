@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api, setSession } from "@/lib/api";
+import { UserPlus } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -35,21 +36,75 @@ export default function RegisterPage() {
       <p className="kicker">New desk</p>
       <h1>Create an account</h1>
       <label htmlFor="register-username">Username</label>
-      <input id="register-username" name="username" autoComplete="username" required minLength={3} maxLength={24} aria-describedby="username-hint" className="full" value={username} onChange={(e) => setUsername(e.target.value)} />
-      <p id="username-hint" className="muted">Use 3–24 lowercase letters, numbers, or underscores.</p>
+      <input
+        id="register-username"
+        name="username"
+        autoComplete="username"
+        required
+        minLength={3}
+        maxLength={24}
+        aria-describedby="username-hint"
+        className="full"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <p id="username-hint" className="muted" style={{ fontSize: 13, marginTop: 4 }}>
+        Use 3–24 lowercase letters, numbers, or underscores.
+      </p>
+
       <label htmlFor="register-email">Email</label>
-      <input id="register-email" name="email" autoComplete="email" required className="full" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input
+        id="register-email"
+        name="email"
+        autoComplete="email"
+        required
+        className="full"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
       <label htmlFor="register-name">Display name</label>
-      <input id="register-name" name="displayName" autoComplete="nickname" className="full" value={displayName} onChange={(e) => setDisplayName(e.target.value)} />
+      <input
+        id="register-name"
+        name="displayName"
+        autoComplete="nickname"
+        className="full"
+        value={displayName}
+        onChange={(e) => setDisplayName(e.target.value)}
+      />
+
       <label htmlFor="register-password">Password</label>
-      <input id="register-password" name="password" autoComplete="new-password" required minLength={8} aria-describedby="password-hint" className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      <p id="password-hint" className="muted">Use at least 8 characters.</p>
-      {err && <p className="err" role="alert">{err}</p>}
+      <input
+        id="register-password"
+        name="password"
+        autoComplete="new-password"
+        required
+        minLength={8}
+        aria-describedby="password-hint"
+        className="full"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <p id="password-hint" className="muted" style={{ fontSize: 13, marginTop: 4 }}>
+        Use at least 8 characters.
+      </p>
+
+      {err && (
+        <p className="err" role="alert">
+          {err}
+        </p>
+      )}
+
       <div className="actions">
         <button className="btn" disabled={busy}>
-          {busy ? "Creating account…" : "Join Inkwell"}
+          <UserPlus size={16} aria-hidden="true" />
+          <span>{busy ? "Creating account…" : "Join Inkwell"}</span>
         </button>
-        <Link href="/login">Already writing?</Link>
+        <Link href="/login" className="ghost" style={{ fontSize: 13.5, padding: "8px 16px", borderRadius: "9999px" }}>
+          Already writing?
+        </Link>
       </div>
     </form>
   );

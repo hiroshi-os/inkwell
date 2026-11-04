@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { api, setSession } from "@/lib/api";
+import { LogIn } from "lucide-react";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -33,15 +34,39 @@ export default function LoginPage() {
       <p className="kicker">Welcome back</p>
       <h1>Log in</h1>
       <label htmlFor="login-username">Username or email</label>
-      <input id="login-username" name="username" required className="full" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" />
+      <input
+        id="login-username"
+        name="username"
+        required
+        className="full"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        autoComplete="username"
+      />
       <label htmlFor="login-password">Password</label>
-      <input id="login-password" name="password" required className="full" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
-      {err && <p className="err" role="alert">{err}</p>}
+      <input
+        id="login-password"
+        name="password"
+        required
+        className="full"
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        autoComplete="current-password"
+      />
+      {err && (
+        <p className="err" role="alert">
+          {err}
+        </p>
+      )}
       <div className="actions">
         <button className="btn" disabled={busy}>
-          {busy ? "Logging in…" : "Log in"}
+          <LogIn size={16} aria-hidden="true" />
+          <span>{busy ? "Logging in…" : "Log in"}</span>
         </button>
-        <Link href="/register">Need an account?</Link>
+        <Link href="/register" className="ghost" style={{ fontSize: 13.5, padding: "8px 16px", borderRadius: "9999px" }}>
+          Need an account?
+        </Link>
       </div>
     </form>
   );

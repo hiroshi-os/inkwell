@@ -1,14 +1,21 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Story } from "@/lib/api";
+import { BookOpen } from "lucide-react";
 
 export function coverStyle(hue: number): CSSProperties {
   return {
-    background: `linear-gradient(165deg, hsl(${hue} 62% 42%), hsl(${(hue + 28) % 360} 48% 18%))`,
+    background: `linear-gradient(155deg, hsl(${hue} 65% 38%) 0%, hsl(${(hue + 25) % 360} 55% 18%) 100%)`,
   };
 }
 
-export function StoryCover({ story, className = "" }: { story: Pick<Story, "title" | "genre" | "coverHue">; className?: string }) {
+export function StoryCover({
+  story,
+  className = "",
+}: {
+  story: Pick<Story, "title" | "genre" | "coverHue">;
+  className?: string;
+}) {
   return (
     <div className={`cover ${className}`} style={coverStyle(story.coverHue)}>
       <span className="genre-pill">{story.genre || "Story"}</span>
@@ -24,7 +31,10 @@ export function StoryCard({ story }: { story: Story }) {
       <div className="card-body">
         <h3>{story.title}</h3>
         <p className="byline">{story.author.displayName}</p>
-        <p className="stats">{story.chapterCount} chapters</p>
+        <p className="stats">
+          <BookOpen size={13} aria-hidden="true" />
+          <span>{story.chapterCount} chapters</span>
+        </p>
       </div>
     </Link>
   );
@@ -44,7 +54,7 @@ export function StoryGrid({ stories, empty }: { stories: Story[]; empty: string 
 export function StoryRail({ title, stories }: { title: string; stories: Story[] }) {
   if (!stories.length) return null;
   return (
-    <section>
+    <section aria-label={title}>
       <div className="section-head">
         <h2>{title}</h2>
         <span className="see">{stories.length} stories</span>
