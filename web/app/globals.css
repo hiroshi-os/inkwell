@@ -528,3 +528,5 @@ input::placeholder, textarea::placeholder { color:#aaa; }
 .site-footer { background:transparent; color:#999; border-top:1px solid #292929; }
 :focus-visible, #main-content:focus { outline-color:#1ed760; }
 @media(max-width:600px) { .wrap { padding-left:16px; padding-right:16px; } main > .wrap { border-radius:0; } .site-header .row { gap:10px; } nav.header-nav { gap:14px; } .featured { grid-template-columns:100px 1fr; } .featured .cover { width:100px; height:150px; } }
+
+.grid .story-card.portrait { width:100%; }

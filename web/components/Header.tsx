@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BookOpen } from "lucide-react";
 
 import { usePathname, useRouter } from "next/navigation";
 import { clearSession } from "@/lib/api";
@@ -22,7 +23,7 @@ export function Header() {
       <div className="row">
         <Link href="/" className="wordmark">
           <span className="nib" aria-hidden>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 7v14M3 18V5a2 2 0 0 1 2-2h2a5 5 0 0 1 5 4 5 5 0 0 1 5-4h2a2 2 0 0 1 2 2v13h-4a5 5 0 0 0-5 3 5 5 0 0 0-5-3z" /></svg>
+            <BookOpen size={20} aria-hidden="true" />
           </span>
           inkwell
         </Link>
