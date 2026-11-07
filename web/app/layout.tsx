@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Header />
         <main id="main-content" tabIndex={-1}>{children}</main>
         <footer className="site-footer">
-          <div className="wrap">Inkwell MVP · original fiction, not a Wattpad clone.</div>
+          <div className="wrap">Inkwell · serialized fiction and chaptered stories.</div>
         </footer>
       </body>
     </html>

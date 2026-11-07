@@ -9,7 +9,7 @@ export default function ReaderPage({ params }: { params: { id: string; chapterId
   const [ch, setCh] = useState<Chapter | null>(null);
   const [err, setErr] = useState("");
 
-  // Wattpad-style reader settings
+  // Reader settings
   const [theme, setTheme] = useState<"dark" | "sepia" | "light">("dark");
   const [font, setFont] = useState<"serif" | "sans">("serif");
   const [fontSize, setFontSize] = useState<"sm" | "md" | "lg">("md");
@@ -72,7 +72,7 @@ export default function ReaderPage({ params }: { params: { id: string; chapterId
       </div>
 
       <article className={`reader theme-${theme} font-${font}`}>
-        {/* Wattpad-like Reader Customization Toolbar */}
+        {/* Reader Appearance Toolbar */}
         <div className="reader-control-bar" role="toolbar" aria-label="Reader appearance settings">
           <div className="reader-control-group">
             <button
